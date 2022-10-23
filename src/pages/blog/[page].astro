@@ -12,7 +12,7 @@ export async function getStaticPaths({ paginate }) {
 const { page } = Astro.props;
 ---
 
-<BaseLayout>
+<BaseLayout title = "Blog">
   <ul>
     <!--List the array of astronaut info-->
     {page.data.map(( post ) => (
