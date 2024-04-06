@@ -48,27 +48,31 @@ pnpm run dev
 │   │   │   ├── post1.md
 │   │   │   ├── post2.md
 │   │   │   └── post3.md
-│   │   ├── store/
-│   │   │   ├── item1.md
-│   │   │   ├── item2.md
+│   │   ├── portfolio/
+│   │   │   ├── post1.md
+│   │   │   ├── post2.md
+│   │   │   └── post3.md
 │   ├── layouts/
 │   │   └── BaseLayout.astro
 │   │   └── PostLayout.astro
 │   └── pages/
+│   │   ├── portfolio/
+│   │   │   ├── [...page].astro
+│   │   │   ├── [slug].astro
+│   │   ├── about.astro
 │   │   ├── blog/
 │   │   │   ├── [...page].astro
 │   │   │   ├── [slug].astro
-│   │   └── cv.astro
+│   │   └── resume.astro
+│   │   └── contact.astro
+│   │   └── support-my-work.astro
 │   │   └── index.astro
-│   │   └── projects.astro
-│   │   └── rss.xml.js
 │   ├── styles/
 │   │   └── global.css
 │   └── config.ts
 ├── public/
 │   ├── favicon.svg
 │   └── profile.webp
-│   └── social_img.webp
 ├── astro.config.mjs
 ├── tailwind.config.cjs
 ├── package.json
