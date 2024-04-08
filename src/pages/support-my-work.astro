@@ -2,28 +2,29 @@
 import BaseLayout from "../layouts/BaseLayout.astro";
 ---
 
-<BaseLayout title="Support" sideBarActiveItemID="support">
-  <div class="mb-5">
-    <div class="text-3xl text-left font-bold">Support My Work</div>
-  </div>
+<BaseLayout title="Support My Work" sideBarActiveItemID="support-my-work">
+  <div class="flex flex-wrap">
+    <div class="mb-5">
+      <h1 class="text-3xl font-bold">Support My Work</h1>
+    </div>
 
-  <div class="mb-10 text-left">
-    If you'd like to support my work, you can donate via any of the payment methods below. Thank you!
+    <div class="mb-10">
+      <p class="text-justify">If you'd like to support my work, you can donate via the payment methods below. Bitcoin prefered. Thank you!</p>
+    </div>
   </div>
 
   <div class="mb-5 text-center" style="max-width: 390px; margin: auto;">
     <div class="text-2xl font-bold mb-2">Bitcoin on Chain</div>
     <img src="/river_onchain.png" alt="Bitcoin QR Code" class="mb-4" style="max-width: 200px; display: block; margin: auto;"/>
     <code class="mb-5 bg-gray-200 text-sm rounded p-2 inline-block" style="margin-top: 10px; word-break: break-all;">bc1qsfrz79yv5a06f3qnwvfulerrngvmq8gek42wqh</code>
-</div>
-
+  </div>
 
   <section class="mb-5 text-center">
     <h2 class="text-2xl font-bold mb-2">Bitcoin Lightning</h2>
     <code class="mb-3 bg-gray-200 text-sm rounded p-2 inline-block" style="margin-top: 10px;"></code>
   </section>
 
-  <!-- Container for side-by-side display including Venmo, with centered text -->
+  <!-- Container for side-by-side display with centered text -->
   <div class="flex flex-wrap justify-center gap-4 mb-5">
     <div class="text-center">
       <h2 class="text-2xl font-bold mb-2">Strike</h2>
