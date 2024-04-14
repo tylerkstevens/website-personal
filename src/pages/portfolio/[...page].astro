@@ -5,7 +5,7 @@ import { getCollection } from "astro:content";
 import createSlug from "../../lib/createSlug"
 
 export async function getStaticPaths({ paginate }) {
-  const posts = await getCollection("blog");
+  const posts = await getCollection("portfolio");
   posts.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
   return paginate(posts, { pageSize: 10 });
 }
@@ -13,16 +13,23 @@ export async function getStaticPaths({ paginate }) {
 const { page } = Astro.props;
 ---
 
-<BaseLayout title="Blog" sideBarActiveItemID="blog">
+<BaseLayout title="Portfolio" sideBarActiveItemID="Portfolio">
   <div class="mb-5">
-    <div class="text-3xl w-full font-bold">Blog</div>
+    <div class="text-3xl w-full font-bold">Portfolio</div>
   </div>
+
+  <div class="mb-5 text-justify">
+    I've documented some of my favorite projects and work below. Take a look!
+  </div>
+
+
+
 
   {
     page.data.length === 0 ? (
       <div class="bg-base-200 border-l-4 border-secondary w-full p-4 min-w-full">
         <p class="font-bold">Sorry!</p>
-        <p>There are no blog posts to show at the moment. Check back later!</p>
+        <p>There are no posts to show at the moment. Check back later!</p>
       </div>
     ) : (
       <ul>
@@ -32,7 +39,7 @@ const { page } = Astro.props;
               title={post.data.title}
               img={post.data.heroImage}
               desc={post.data.description}
-              url={"/blog/" + createSlug(post.data.title, post.slug)}
+              url={"/portfolio/" + createSlug(post.data.title, post.slug)}
               target="_self"
               badge={post.data.badge}
               tags={post.data.tags}
@@ -83,5 +90,7 @@ const { page } = Astro.props;
         <div />
       )
     }
+
   </div>
+
 </BaseLayout>
