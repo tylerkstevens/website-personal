@@ -10,4 +10,4 @@ It is my theory that we will see an effort to develop bitcoin mining ASIC chips 
 
 Check out my first article on the Braiins Blog, where I agrue this case.
 
-[Read the full article here](https://braiins.com/blog)
+<a href="https://braiins.com/blog" target="_blank">Read the full article here</a>
