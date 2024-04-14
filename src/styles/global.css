@@ -9,3 +9,10 @@
     width: 48px; /* Adjust if you want a specific width */
     height: 48px; /* Ensures icons have a standard size */
 }
+
+hr {
+    margin-top: 20px; /* Adjusts the space above the line */
+    margin-bottom: 20px; /* Adjusts the space below the line */
+    border-color: #ccc; /* Sets the color of the line */
+    border-width: 1px; /* Sets the thickness of the line */
+}
