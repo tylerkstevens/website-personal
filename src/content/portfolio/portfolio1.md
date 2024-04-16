@@ -2,7 +2,7 @@
 title: "Barn Compost Heat Recovery - Thermoeconomic Analysis"
 description: "Winter heating can be expensive. In this analysis, I investigae the thermodynamic and economic performance of compost heat integration to a Hi-Rib steel cattle barn to offset natural gas heat costs."
 pubDate: "Aug 5 2021"
-heroImage: "/Portfolio/Post1/CompostHeatBarn.png"
+heroImage: "/portfolioimages/Post1/CompostHeatBarn.png"
 tags: ["thermodynamics","energy","economics"]
 badge: "FAVORITE"
 ---
@@ -25,17 +25,17 @@ load and humidity can be ignored. The building model capacitance can be ignored.
 
 Diagrams for the baseline and modified systems are shown in Figures A.1.1 & A.1.2. The driving load for both systems is barn heat loss to ambient, indicated in Figure A.5.1. Heat loss was first estimated using Eq. 1, which predicts barn heating requirements [4]. 
 
-![Equation 1](/Portfolio/Post1/equation1.png "Equation 1")
+![Equation 1](/portfolioimages/Post1/equation1.png "Equation 1")
 
 This value was validated (error ~ 6%) using a building model calculation based on convection and conduction resistance networks. The barn is modeled as an uninsulated Hi-Rib Steel building with dirt flooring and 29 [ga] walls [5]. Design parameters are shown in table A.2.1. Conduction through the dirt was implemented to determine the required floor temperature at off design conditions over the heating months (October-March), shown in Figure A.5.2. Operating parameters and diagrams for the design condition are documented in Appendix A.4. The 2nd Law motivation for the system modification is the reduction in unrestrained heat transfer through a temperature difference. Specifically, the unrestrained heat transfer of the heat produced in the production of compost. This would otherwise be heat waste, but is recuperated by the system to reduce the natural gas needed to heat the barn to the desired temperature.
 
 The energy savings in the modified system is 65.82 [GJ] over the course of the winter season [6]. This represents energy savings through reduction of natural gas burned and required pump power. Figure A.5.3 indicates the total energy cost required to maintain the barn at the setpoint temperature, which also represents the winter energy savings. Notice that early in the heating season, the heat supplied from the compost heater is satisfactory due to higher ambient temperatures. Thus there is no energy cost for the modified system for many hours of the study. A higher resolution plot is shown for February in Figure A.5.4. These energy savings, (minus compost purchase and install cost) combined with the effective fuel cost subsidization by means of compost fertilizer resale is the motivation for the system modification.
 
-![Baseline Barn Heating System](/Portfolio/Post1/baseline_barnheating_system.png "Baseline Barn Heating System")
+![Baseline Barn Heating System](/portfolioimages/Post1/baseline_barnheating_system.png "Baseline Barn Heating System")
 
 <p style="text-align: center; font-weight: bold;">Figure A.1.1: Baseline barn heating system.</p>
 
-![Modified Barn Heating System](/Portfolio/Post1/modified_barnheating_system.png "Modified Barn Heating System")
+![Modified Barn Heating System](/portfolioimages/Post1/modified_barnheating_system.png "Modified Barn Heating System")
 
 <p style="text-align: center; font-weight: bold;">Figure A.1.2: Modified barn heating system.</p>
 
@@ -100,25 +100,25 @@ Thermal and economic analysis of the proposed barn heating system indicate that 
 
 <p style="text-align: center; font-weight: bold;">Table A.4.1: State Properties: Design Cond</p>
 
-![Design Condition State Properties](/Portfolio/Post1/designcondition_stateprops.png "Design Condition State Properties")
+![Design Condition State Properties](/portfolioimages/Post1/designcondition_stateprops.png "Design Condition State Properties")
 
-![Winter Heat Loss & Amb Temp](/Portfolio/Post1/winterheatloss_ambtemp.png "Winter Heat Loss & Amb Temp")
+![Winter Heat Loss & Amb Temp](/portfolioimages/Post1/winterheatloss_ambtemp.png "Winter Heat Loss & Amb Temp")
 
 <p style="text-align: center; font-weight: bold;">Figure A.5.1: Winter Hourly Heat Loss & Ambient Temperature Data: (Off-Design)</p>
 
-![Winter Hourly System Temp Data](/Portfolio/Post1/winterhoursystem_tempdata.png "Winter Hourly System Temp Data")
+![Winter Hourly System Temp Data](/portfolioimages/Post1/winterhoursystem_tempdata.png "Winter Hourly System Temp Data")
 
 <p style="text-align: center; font-weight: bold;">Figure A.5.2: Winter Hour System Temp Data: (Off-Design) Base & Mod System</p>
 
-![Winter Hourly Energy Cost](/Portfolio/Post1/winterhour_energycost.png "Winter Hourly Energy Cost")
+![Winter Hourly Energy Cost](/portfolioimages/Post1/winterhour_energycost.png "Winter Hourly Energy Cost")
 
 <p style="text-align: center; font-weight: bold;">Figure A.5.3: Hourly Winter Energy Cost (Off-Design) Base & Mod System</p>
 
-![February Hourly Energy Cost](/Portfolio/Post1/februaryhour_energycost.png "February Hourly Energy Cost")
+![February Hourly Energy Cost](/portfolioimages/Post1/februaryhour_energycost.png "February Hourly Energy Cost")
 
 <p style="text-align: center; font-weight: bold;">Figure A.5.3: February Hourly Energy Cost (Off-Design) Base & Mod System</p>
 
-![Economic Perfromance Metrics](/Portfolio/Post1/economicperformance.png "Economic Performance Metrics")
+![Economic Perfromance Metrics](/portfolioimages/Post1/economicperformance.png "Economic Performance Metrics")
 
 <p style="text-align: center; font-weight: bold;">Figure A.6.1: Economic Performance on 10 year model with Figures of Merit.</p>
 
@@ -129,7 +129,7 @@ PLOT: cumulative fuel savings impacted by annual compost and labor costs)
 - **D)** Time when cumulative total savings = down payment.
 - **E)** Time when cumulative total savings = remaining principal.
 
-![Cost Savings](/Portfolio/Post1/costsavingsbreakdown.png "Cost Savings")
+![Cost Savings](/portfolioimages/Post1/costsavingsbreakdown.png "Cost Savings")
 
 <p style="text-align: center; font-weight: bold;">Figure A.6.2: Resale, System, Energy, Interest, Tax, and Labor Costs/Savings</p>
 
