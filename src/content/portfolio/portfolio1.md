@@ -1,11 +1,15 @@
 ---
-title: "Barn Compost Heat Recovery - Thermoeconomic Analysis"
+title: "Barn Compost Heat Recovery - Thermo-Economic Analysis"
 description: "Winter heating can be expensive. In this analysis, I investigae the thermodynamic and economic performance of compost heat integration to a Hi-Rib steel cattle barn to offset natural gas heat costs."
 pubDate: "Aug 5 2021"
 heroImage: "/portfolioimages/Post1/CompostHeatBarn.png"
 tags: ["thermodynamics","energy","economics"]
 badge: "FAVORITE"
 ---
+This analysis was performed with [Engineering Equation Solver (EES)](https://fchartsoftware.com/ees/), a non-linear equation solver that includes various resources for thermodynamics, heat transfer, unit handling, and economic functions.
+
+Download the Thermo-Economic model [here](/downloads/CompostBarnHeatingModel.zip) to see the code for yourself.
+
 ### Introduction
 
 Generating heat for water and buildings can be energy intensive, especially in climates facing extreme winter weather. These energy needs are commonly met by natural gas water heaters for hydronic heating. An alternative heat source, the compost water heater, was developed in the 1970’s by French inventor Jean Pain [1]. Compost heating systems recover waste heat generated during the decomposition process of organic materials. Implementation presents a potential for cost savings by reduction in typical energy consumption.
