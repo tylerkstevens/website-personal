@@ -8,4 +8,4 @@ badge: "BLOG"
 ---
 Bitcoin miners exhaust a lot of heat energy. How does this work? What's the efficiency? How do I properly cool these things? My article, "ASICs Run Hot - Understanding How they Transfer Heat", on the Exergy Insights Blog goes into detail.
 
-<a href="https://exergyinsights.xyz/asics/" target="_blank">Read the full article here</a>
+<a href="https://insights.exergy.me/asics/" target="_blank">Read the full article here</a>
