@@ -4,6 +4,7 @@ description: "The latest article from Exergy Insights, my business blog, touches
 pubDate: "Mar 12 2024"
 heroImage: "/blogimages/post2/ExergyInsights_ASICrunHot.png"
 tags: ["bitcoin","mining","thermodynamics","energy","heat transfer"]
+badge: "BLOG"
 ---
 Bitcoin miners exhaust a lot of heat energy. How does this work? What's the efficiency? How do I properly cool these things? My article, "ASICs Run Hot - Understanding How they Transfer Heat", on the Exergy Insights Blog goes into detail.
 
