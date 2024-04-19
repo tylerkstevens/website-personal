@@ -1,12 +1,6 @@
-# Astrofy | Personal Portfolio Website Template
+# Tyler Stevens Personal Portfolio Website
 
-![Astrofy | Personal Porfolio Website Template](public/social_img.webp)
-
-Astrofy is a free and open-source template for your Personal Portfolio Website built with Astro and TailwindCSS. Create in minutes a website with a Blog, CV, Project Section, Store, and RSS Feed.
-
-## Demo
-
-View a live demo of [Astrofy](https://astrofy-template.netlify.app/)
+I built this personal website using the Astrofy template, a free and open-source template for your Personal Portfolio Website built with Astro and TailwindCSS.
 
 ## Installation
 
@@ -22,6 +16,12 @@ Once the packages are installed you are ready to run astro. Astro comes with a b
 pnpm run dev
 ```
 
+The astro build command will compile the project into a dist folder, to be uploaded to your website hosting server.
+
+```bash
+pnpm run build
+```
+
 ## Tech Stack
 
 - [Astro](https://astro.build)
@@ -33,7 +33,7 @@ pnpm run dev
 ```php
 ├── src/
 │   ├── components/
-│   │   ├── cv/
+│   │   ├── resume/
 │   │   │   ├── TimeLine
 │   │   ├── BaseHead.astro
 │   │   ├── Card.astro
@@ -41,37 +41,50 @@ pnpm run dev
 │   │   ├── Header.astro
 │   │   └── HorizontalCard.astro
 │   │   └── SideBar.astro
-│   │   └── SideBarMenu.astro
 │   │   └── SideBarFooter.astro
+│   │   └── SideBarMenu.astro
 │   ├── content/
 │   │   ├── blog/
 │   │   │   ├── post1.md
 │   │   │   ├── post2.md
-│   │   │   └── post3.md
+│   │   │   ├── post3.md
+│   │   │   └── post....md
 │   │   ├── portfolio/
-│   │   │   ├── post1.md
-│   │   │   ├── post2.md
-│   │   │   └── post3.md
+│   │   │   ├── portfolio1.md
+│   │   │   ├── portfolio2.md
+│   │   │   ├── portfolio3.md
+│   │   │   └── portfolio....md
 │   ├── layouts/
 │   │   └── BaseLayout.astro
+│   │   └── PortfolioLayout.astro
 │   │   └── PostLayout.astro
 │   └── pages/
-│   │   ├── portfolio/
-│   │   │   ├── [...page].astro
-│   │   │   ├── [slug].astro
-│   │   ├── about.astro
 │   │   ├── blog/
 │   │   │   ├── [...page].astro
 │   │   │   ├── [slug].astro
-│   │   └── resume.astro
+│   │   ├── portfolio/
+│   │   │   ├── [...page].astro
+│   │   │   ├── [slug].astro
+│   │   ├── 404.astro
+│   │   ├── about.astro
 │   │   └── contact.astro
-│   │   └── support-my-work.astro
 │   │   └── index.astro
+│   │   └── resume.astro
+│   │   └── support-my-work.astro
 │   ├── styles/
 │   │   └── global.css
 │   └── config.ts
 ├── public/
-│   ├── favicon.svg
+│   ├── blogimages/
+│   │   └── post1/
+│   │   └── post2/
+│   │   └── post3/
+│   ├── downloads/
+│   ├── portfolioimages/
+│   │   └── portfolio1/
+│   │   └── portfolio2/
+│   │   └── portfolio3/
+│   ├── favicon.png
 │   └── profile.webp
 ├── astro.config.mjs
 ├── tailwind.config.cjs
@@ -106,14 +119,13 @@ To add a new page in the sidebar go to the `SideBarMenu` component.
 
 ```
 <li><a class="py-3 text-base" id="home" href="/">Home</a></li>
-
 ```
 
 **Note**: In order to change the sidebar menu's active item, you need to setup the prop `sideBarActiveItemID` in the `BaseLayout` component of your new page and add that id to the link in the `SideBarMenu`
 
 #### TimeLine
 
-The timeline components are used to confirm the CV.
+The timeline components are used to confirm the resume.
 
 ```html
 <div class="time-line-container">
@@ -128,7 +140,7 @@ The timeline components are used to confirm the CV.
 
 #### Card & HorizontalCard
 
-The cards are primarly used for the Project and the Blog components. They include a picture, a title, and a description. 
+The cards are primarly used for the Portfolio and the Blog components. They include a picture, a title, and a description.
 
 ```html
 <HorizontalCard title="Card Title" img="imge_url" desc="Description" url="Link
@@ -136,34 +148,13 @@ URL" target="Optional link target (_blank default)" badge="Optional badge"
 tags={['Array','of','tags']} />
 ```
 
-#### HorizontalCard Shop Item
-
-
-This component is already included in the Store layout of the template. In case you want to use it in another place these are the props.
-
-```html
-<HorizontalShopItem
-  title="Item Title"
-  img="imge_url"
-  desc="Item description"
-  pricing="current_price"
-  oldPricing="old_price"
-  checkoutUrl="external store checkout url"
-  badge="Optional badge"
-  url="item details url"
-  custom_link="Custom link url"
-  custom_link_label="Cutom link btn label"
-  target="Optional link target (_self default)"
-/>
-```
-
 #### Adding a Custom Component
 
-To add a custom component, you can create a .astro file in the components folder under the source folder. 
+To add a custom component, you can create a .astro file in the components folder under the source folder.
 
-Components must follow this template. The ```---``` represents the code fence and uses Javascript and can be used for imports. 
+Components must follow this template. The ```---``` represents the code fence and uses Javascript and can be used for imports.
 
-The HTML component is the actual style of your new component. 
+The HTML component is the actual style of your new component.
 
 ```html
 ---
@@ -172,13 +163,13 @@ The HTML component is the actual style of your new component.
 <!-- Component Template (HTML + JS Expressions) -->
 ```
 
-For more details, see the [astro components](https://docs.astro.build/en/core-concepts/astro-components/) documentation here. 
+For more details, see the [astro components](https://docs.astro.build/en/core-concepts/astro-components/) documentation here.
 
 ### Layouts
 
 Include `BaseLayout` in each page you add and `PostLayout` to your post pages.
 
-The BaseLayout defines a general template for each new webpage you want to add. It imports constants SITE_TITLE and SITE_DESCRIPTION which can be modified in the ```../config``` folder. Data placed there can be imported anywhere using import. 
+The BaseLayout defines a general template for each new webpage you want to add. It imports constants SITE_TITLE and SITE_DESCRIPTION which can be modified in the ```../config``` folder. Data placed there can be imported anywhere using import.
 
 ### Content
 
@@ -190,7 +181,7 @@ Where you need to define your content collections, we define our content schemas
 
 #### Blog
 
-Add your `md` blog post in the `/content/blog/` folder.
+Add your `md` blog post in the `/content/blog/` or `/content/portfolio/` folder.
 
 ##### Post format
 
@@ -207,9 +198,9 @@ heroImage: "Post Hero Image URL"
 
 ### Pages
 
-#### Blog
+#### Blog / Portfolio
 
-Blog uses Astro's content collection to query post's `md`.
+Blog and Portfolio use Astro's content collection to query post's `md`.
 
 ##### [page].astro
 
@@ -218,34 +209,6 @@ The `[page].astro` is the route to work with the paginated post list. You can ch
 ##### [slug].astro
 
 The `[slug].astro` is the base route for every blog post, you can customize the page layout or behaviour, by default uses `content/blog` for content collection and `PostLayout` as layout.
-
-#### Shop
-
-Add your `md` item in the `/pages/shop/` folder.
-
-##### [page].astro
-
-The `[page].astro` is the route to work with the paginated item list. You can change there the number of items listed for each page and the pagination button labels. The shop will render all `.md` files you include inside this folder.
-
-##### Item format
-
-Add code with this format at the top of each item file.
-
-```js
----
-title: "Demo Item 1"
-description: "Item description"
-heroImage: "Item img url"
-details: true // show or hide details btn
-custom_link_label: "Custom btn link label"
-custom_link: "Custom btn link"
-pubDate: "Sep 15 2022"
-pricing: "$15"
-oldPricing: "$25.5"
-badge: "Featured"
-checkoutUrl: "https://checkouturl.com/"
----
-```
 
 #### Static pages
 
@@ -276,18 +239,6 @@ The configuration for the deployment varies depending on the platform where you 
 
 Suggestions and pull requests are welcomed! Feel free to open a discussion or an issue for a new feature request or bug.
 
-One of the best ways to contribute is to grab a [bug report or feature suggestion](https://github.com/manuelernestog/astrofy/issues) that has been marked `accepted` and dig in.
-
-Please be wary of working on issues _not_ marked as `accepted`. Just because someone has created an issue doesn't mean we'll accept a pull request for it.
-
 ## License
 
 Astrofy is licensed under the MIT license — see the [LICENSE](https://github.com/manuelernestog/astrofy/blob/main/LICENSE) file for details.
-
-## Contributors
-
-<a href="https://github.com/manuelernestog/astrofy/graphs/contributors">
-  <img src="https://contrib.rocks/image?repo=manuelernestog/astrofy" />
-</a>
-
-Made with [contrib.rocks](https://contrib.rocks).
