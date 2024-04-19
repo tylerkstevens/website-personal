@@ -4,7 +4,7 @@ description: "I had the pleasure of shooting a video comparison of my personal '
 pubDate: "April 2 2024"
 heroImage: "/TFL_Hardbody_Review.jpg"
 tags: ["auto","offroad","colorado"]
-badge: "TRUCK REVIEW"
+badge: "VIDEO"
 ---
 
 Watch the video [here](https://www.youtube.com/watch?v=ZqG4IdXf1Ss)!
