@@ -7,7 +7,8 @@ tags: ["auto","offroad","colorado"]
 badge: "VIDEO"
 ---
 
-Watch the video [here](https://www.youtube.com/watch?v=ZqG4IdXf1Ss)!
+Watch the video on TFL's YouTube channel <a href="https://www.youtube.com/watch?v=ZqG4IdXf1Ss" target="_blank">here</a>.
+---
 
 In late March of 2024, I recorded a video review of my 1995 Nissan D21 Pickup Truck (Hardbody) with Kase from The Fast Lane YouTube channel. Thanks to TFL for having me out. What a fun day. I've been watching their automtive reviews since I was in high school, so it was a treat to spend some time with the crew.
 
