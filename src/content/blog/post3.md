@@ -4,10 +4,12 @@ description: "Denver BitDevs, in colaboration with The Mining Pod, put together 
 pubDate: "April 20 2024"
 heroImage: "/blogimages/post3/halvingparty_header.png"
 tags: ["bitcoin","mining","energy"]
-badge: "BLOG"
+badge: "VIDEO"
 ---
 
 At our <a href="https://twitter.com/DenverBitDevs" target="_blank">Denver BitDevs</a> halving party, I sat down for a panel discussion with <a href="https://twitter.com/tatumturnup" target="_blank">Tatum Turn Up</a> to discuss bitcoin mining. The key topics and points I wanted to get across are highlighted below.
+
+You can watch a full recording of the panel discussions on the Blockspace YouTube channel, <a href="https://www.youtube.com/live/4shWzv4x_Gw?si=w1snilCED9OP0WIQ&t=4671" target="_blank">here</a>.
 
 ---
 
