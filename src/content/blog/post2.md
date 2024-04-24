@@ -7,7 +7,7 @@ tags: ["bitcoin","mining","thermodynamics","energy"]
 badge: "BLOG"
 ---
 
-Read the full article <a href="https://braiins.com/blog" target="_blank">here</a>.
+Read the full article <a href="https://braiins.com/blog/asics-optimized-for-heat-not-efficiency-will-decentralize-mining" target="_blank">here</a>.
 ---
 
 A valuable, untapped market exists for mining focused on heat reuse applications.
