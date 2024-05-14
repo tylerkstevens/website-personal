@@ -68,11 +68,67 @@ The pump curve of the system is defined via the following equations.
 
 In = Out --> m_dot[1] = m_dot[4] = m_dot
 
+During steady state operaiton, the mass flowrate of water into the pool equals the mass flowrate of water leaving the pool.
+
 *Energy Balance*
+
+m_dot * h[4] = Q_dot_pool + m_dot * h[1]
+
+The energy associated with the mass of the water entering and leaving the system is related to the enthalpy of the water, which is defined by the properties of the water.
+
+*Entropy Balance*
+
+S_dot_gen_pool = (Q_dot_pool / T_pool) + m_dot * (s[4]-s[1])
+
+Entropy generation inside the pool can be calculated to measure exergy destruction.
 
 #### State [1] - Pump Inlet
 
+*State Properties*
+
+T[1] = T_pool = 80 [F]
+
+P[1] = P_o = 14.7 [psi] (Assumption for P[2] == Ambient)
+
+Pump inlet water properties are equal to the properties of the water leaving the pool.
+
+*Incompressible Fluid Model*
+
+u[1] = c_w * T[1]
+
+h[1] = c_w * T[1] - v_w * P[1]
+
 #### State [1-2] - Water Pump
+
+*Mass Balance*
+
+m_dot_2 = m_dot_1 = m_dot = Vol_dot/v_w
+
+Water mass flow rate during steady state operation can also be calculated from the volumetric flowrate of the water, divided by the specific volume of the water (determined by T and P).
+
+*Energy Balance*
+
+m_dot[1] * h[1] + W_dot_p = m_dot[2] * h[2]
+
+Energy from the pump is added to the water from state 1 to 2.
+
+*Entropy Balance*
+
+m_dot[1] * s[1] + S_dot_gen_p = m_dot[2] * s[2]
+
+(s[2]-s[1]) = c_w * ln(T[2]/T[1])
+
+*Reversible Energy Balance*
+
+m_dot[1] * h[1] + W_dot_p_s = m_dot[2] * h_s[2]
+
+h_s[2] = c_w * T[1] + v_w * P[2]
+
+*Pump Performance Balance*
+
+eta_p = 0.4 = W_dot_p_s / W_dot_p
+
+The water pump is marked with a 40% efficiency compared to a perfectly reversible pump with no entropy generation.
 
 #### State [2] - Pump Outlet
 

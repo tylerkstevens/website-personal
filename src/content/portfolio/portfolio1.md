@@ -27,7 +27,7 @@ load and humidity can be ignored. The building model capacitance can be ignored.
 
 ### Thermal Analysis
 
-Diagrams for the baseline and modified systems are shown in Figures A.1.1 & A.1.2. The driving load for both systems is barn heat loss to ambient, indicated in Figure A.5.1. Heat loss was first estimated using Eq. 1, which predicts barn heating requirements [4]. 
+Diagrams for the baseline and modified systems are shown in Figures A.1.1 & A.1.2. The driving load for both systems is barn heat loss to ambient, indicated in Figure A.5.1. Heat loss was first estimated using Eq. 1, which predicts barn heating requirements [4].
 
 ![Equation 1](/portfolioimages/portfolio1/equation1.png "Equation 1")
 
