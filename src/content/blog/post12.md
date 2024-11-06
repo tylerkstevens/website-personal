@@ -4,7 +4,7 @@ description: "How to we built a community run bitcoin citadel from scratch."
 pubDate: "Octboer 29 2024"
 heroImage: "/blogimages/post12/compass_space_podcast.jpeg"
 tags: ["bitcoin","mining","community","education"]
-badge: "MANIFESTO"
+badge: "PODCAST"
 ---
 
 ## Babe, new bitcoin hub just dropped
