@@ -2,7 +2,7 @@
 title: "A Heatpunk's Manifesto"
 description: "Tyler Stevens - September 28, 2024"
 pubDate: "September 28 2024"
-tags: ["bitcoin","mining","energy","heating"]
+tags: ["bitcoin","mining","energy","heating","heatpunk"]
 badge: "MANIFESTO"
 ---
 
