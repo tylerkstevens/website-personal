@@ -4,7 +4,7 @@ description: "Denver BitDevs, in colaboration with The Mining Pod, put together 
 pubDate: "April 20 2024"
 heroImage: "/blogimages/post3/halvingparty_header.png"
 tags: ["bitcoin","mining","energy"]
-badge: "VIDEO"
+badge: "PANEL"
 ---
 
 Watch the video on Blockspace's YouTube channel <a href="https://www.youtube.com/live/4shWzv4x_Gw?si=w1snilCED9OP0WIQ&t=4671" target="_blank">here</a>.

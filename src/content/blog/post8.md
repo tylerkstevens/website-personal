@@ -4,7 +4,7 @@ description: "At the beginning of June I hosted the monthly Denver BitDevs meetu
 pubDate: "June 6 2024"
 heroImage: "/blogimages/post8/SLIDE02.png"
 tags: ["bitcoin","mining","thermodynamics","energy","heat transfer"]
-badge: "VIDEO"
+badge: "PRESENTATION"
 ---
 
 Check out the video recording of the discussion <a href="https://www.youtube.com/watch?v=bTXjEke-AbU" target="_blank">here</a>.

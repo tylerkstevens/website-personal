@@ -4,7 +4,7 @@ description: "My first bitcoin presentation covered bitcoin and energy fundament
 pubDate: "April 25 2024"
 heroImage: "/blogimages/post6/bitcointhermodynamics.png"
 tags: ["bitcoin","mining","thermodynamics","energy","heat transfer"]
-badge: "VIDEO"
+badge: "PRESENTATION"
 ---
 
 Watch the video on my YouTube channel <a href="https://youtu.be/EDjvWW6kNGY?si=l3nOmoN1OZewHm5p" target="_blank">here</a>.
