@@ -28,7 +28,7 @@ The unmodified heated pool system consists of the swimming pool itself, a water 
 
 A schematic of the baseline system is shown below in **Figure 1**.
 
-XXX FIGURE 1 XXX
+![Baseline Pool Heating System](/portfolioimages/portfolio2/Figure1_BaselineSystem.jpg "Baseline Heating System")
 
 ### Known Parameters - Baseline
 
@@ -132,23 +132,105 @@ The water pump is marked with a 40% efficiency compared to a perfectly reversibl
 
 #### State [2] - Pump Outlet
 
+P[2] = P[1] + ∆P
+
+T[2] = From E-bal, State 1-2
+
+State fixed with Pressure and Temperature
+
 #### State [2-3] - Piping
+
+P[3] = P[2] (Ignoring pressure loss through pipe resistance / geometry)
+
+T[3] = T[2]
+
+*Mass Balance*
+
+m_dot[3] = m_dot[2]
+
+*Energy Balance*
+
+m_dot[3]*h[3] = m_dot[2]*h[2]
 
 #### State [3] - Water Heater Inlet
 
+T[3] = T[2]
+
+P[3] = P[2]
+
+h[3] = h[2]
+
+u[3] = u[2]
+
+State fixed with Pressure and Temperature
+
 #### State [3-4] - Water Heater
+
+*Energy Balance*
+
+m_dot[3] * h[3] + Q_dot_f = m_dot[4]*h[4]
+
+h[4] = c_w * T[4] + v_w * P[4]
+
+*Entropy Balance*
+
+m_dot[3] * s[3] + (Q_dot_f/T_f) + S_dot_gen,h = m_dot[4] * s[4]
+
+S_dot_gen,h = m_dot(s[4]-s[3]) - Q_dot_f/T_f
+
+(s[4]-s[3]) = c_w * ln(T[4]/T[3])
+
+*Heat Exchanger Efficiency*
+
+eta_h = 0.95 = Q_dot_f,s / Q_dot_f
+
+*Reversible Energy Balance*
+
+m_dot[3] * h[3] + Q_dot_f,s = m_dot[4] * h_s[4]
+
+h_s[4] = c_w * T[3] + v * P[4]
 
 #### State [4] - Heater Outlet
 
+P[4] = P[3] - ∆P_h
+
+∆P_h = 3E12 [Pa-s/m^6] * Vol_dot^2
+
+u[4] = c_w * T[4]
+
+h[4] = solved from Reversible Energy Balance and Heat Exchanger Efficiency
+
 ### Performance Calculations - Baseline
 
+#### Pump Curves - Baseline
+
+![Baseline System Pump Curves](/portfolioimages/portfolio2/Figure2_Baseline.jpg "Baseline Heating System")
+
+#### System Curves - Baseline
+
+![Baseline System Curves](/portfolioimages/portfolio2/Figure3_Baseline.jpg "Baseline Heating System")
+
+#### Performance Metrics - Baseline
+
+![Baseline System Performance Metrics](/portfolioimages/portfolio2/Figure4_Baseline.jpg "Baseline Heating System")
+
 ### Economic Calculations - Baseline
+
+![Baseline System Economic Metrics](/portfolioimages/portfolio2/Figure5_Baseline.jpg "Baseline Heating System")
 
 ---
 
 ## Solar Modified System
 
+![Modified Pool Heating System](/portfolioimages/portfolio2/Figure6_ModifiedSystem.jpg "Baseline Heating System")
+
 ### Known Parameters - Modified
+
+|Variable|Value|Comment|
+|----------|----------|----------|
+|SF|950 [W/m^2]|Solar Flux|
+|A_col|6 [m^2]|Solar Collector Surface Area|
+|∆P_col|5E12 [(Pa-s^2/m^6)*Vol_dot^2]|Pool Water Specific Heat Capacity|
 
 ---
 
@@ -156,14 +238,31 @@ The water pump is marked with a 40% efficiency compared to a perfectly reversibl
 
 #### State [2-3] - Solar Flux Collector
 
+![Modified State 2-3](/portfolioimages/portfolio2/Figure7_Modified.jpg "Modified Heating System")
+
 #### State [3] - Solar Collector Outlet
+
+![Modified State 3](/portfolioimages/portfolio2/Figure8_Modified.jpg "Modified Heating System")
+
 
 ### Performance Calculations - Modified
 
+![Modified System Performance Metrics](/portfolioimages/portfolio2/Figure9_Modified.jpg "Modified Heating System")
+
+![Modified System Performance Metrics](/portfolioimages/portfolio2/Figure10_Modified.jpg "Modified Heating System")
+
 ### Economic Calculations - Modified
+
+![Modified System Economic Metrics](/portfolioimages/portfolio2/Figure11_Modified.jpg "Modified Heating System")
 
 ---
 
 ## Economic Comparison
 
+The baseline heating system comes with higher operational costs, driven by the inefficiencies of conventional methods. In contrast, the upgraded system introduces smarter solutions like integrating a solar collector, which offsets a significant portion of the heating load. This means less reliance on expensive energy sources and more money saved over time.
+
+For example, the upgraded system reduces water heating costs from $0.4074/hour in the baseline to $0.2384/hour by covering 41.6% of the heating load through solar input. That’s a huge efficiency boost with direct cost savings for every hour the system is in use.
+
 ## Conclusion
+
+This comparison shows a clear advantage: upgrading the system cuts operational costs, plain and simple. By lowering the amount you’re spending on heat while still meeting the same demand, the upgraded setup pays for itself over time. If saving money is the goal, the numbers make this a no-brainer.
