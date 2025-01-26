@@ -7,7 +7,7 @@ tags: ["bitcoin","mining","energy","heating","heatpunk"]
 badge: "PODCAST"
 ---
 
-## Babe, new bitcoin hub just dropped
+## New Book Inbound!
 
 I had a conversation with Jarrett from Compass Mining exploring the potential for Bitcoin miners to evolve into heating appliances and devices that pay you for using them. The incentives are aligned. The potential is there. We just need to make a few changes for this emerging sub-industry to manifest.
 

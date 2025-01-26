@@ -7,7 +7,7 @@ tags: ["bitcoin","mining","energy","heating","heatpunk"]
 badge: "PRESENTATION"
 ---
 
-## What kind of miner are you?
+## Heat will bring hashrate back home.
 
 I was fortunate to speak at my first bitcoin conference in September where I put my Heatpunk Manifesto into presentation form.
 
