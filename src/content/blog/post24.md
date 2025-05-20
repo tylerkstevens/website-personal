@@ -1,8 +1,8 @@
 ---
-title: "Forbes Contribution: Bitcoin Miners Hit Breaking Point One Year After Halving"
+title: "As Quoted in Forbes: Bitcoin Miners Hit Breaking Point One Year After Halving"
 description: "See my thoughts quoted in an article for Forbes Crypto about bitcoin mining heat reuse."
 pubDate: "2025-03-25"
-heroImage: "/blogimages/post24/forbes_image.webp"
+heroImage: "/blogimages/post24/forbes.webp"
 tags: ["bitcoin", "mining", "energy", "heating", "heatpunk"]
 badge: "QUOTE"
 ---
