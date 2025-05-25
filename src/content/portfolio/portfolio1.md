@@ -4,7 +4,7 @@ description: "Winter heating can be expensive. In this analysis, I investigate t
 pubDate: "Aug 5 2021"
 heroImage: "/portfolioimages/portfolio1/CompostHeatBarn.png"
 tags: ["thermodynamics","energy","economics"]
-badge: "FAVORITE"
+badge: "MODEL"
 ---
 
 This analysis was performed with [Engineering Equation Solver (EES)](https://fchartsoftware.com/ees/), a non-linear equation solver that includes various resources for thermodynamics, heat transfer, unit handling, and economic functions.

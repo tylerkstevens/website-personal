@@ -4,6 +4,7 @@ description: "How much money can be saved on heating bills with a solar swimming
 pubDate: "June 24 2021"
 heroImage: "/portfolioimages/portfolio2/solar_poolheater_upgrade.png"
 tags: ["thermodynamics","energy","economics"]
+badge: "MODEL"
 ---
 
 To follow along with my hand written work or view the code print out, download the Thermo-Economic model [here](/downloads/Solar_PoolHeating_Model.pdf).

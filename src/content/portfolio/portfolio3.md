@@ -4,6 +4,7 @@ description: "I coded the website for our upcoming bitcoin citadel, The Space. H
 pubDate: "June 21 2024"
 heroImage: "/portfolioimages/portfolio3/TheSpaceWebsite.png"
 tags: ["HTML","Astro"]
+badge: "WEBSITE"
 ---
 
 ## Background
