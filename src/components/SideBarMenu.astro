@@ -1,6 +1,7 @@
 ---
 const { sideBarActiveItemID } = Astro.props;
 const activeClass = "bg-base-300"; // For primary color replace with `active` class
+import ThemeToggle from "./ThemeToggle.astro";
 ---
 
 <ul class="menu grow shrink menu-md overflow-y-auto">
@@ -11,6 +12,9 @@ const activeClass = "bg-base-300"; // For primary color replace with `active` cl
     <li><a class="py-3 text-base" id="resume" href="/resume">Resume</a></li>
     <li><a class="py-3 text-base" id="contact" href="/contact">Contact</a></li>
     <li><a class="py-3 text-base" id="support-my-work" href="/support-my-work">Support My Work</a></li>
+    <li class="mt-4">
+      <ThemeToggle />
+    </li>
 </ul>
 
 <script define:vars={{ sideBarActiveItemID: sideBarActiveItemID, activeClass: activeClass }}>

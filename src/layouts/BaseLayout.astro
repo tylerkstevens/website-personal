@@ -17,10 +17,46 @@ const {
 ---
 
 <!doctype html>
-<html lang="en" data-theme="lofi">
+<html lang="en">
   <head>
     <BaseHead title={title} description={description} image={image} , ogType={ogType} />
     {TRANSITION_API && <ViewTransitions />}
+    <script>
+      // Theme management - runs before page render to prevent flash
+      (function() {
+        function getSystemTheme() {
+          return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+        }
+
+        function applyTheme(theme) {
+          const themeMap = {
+            'light': 'lofi',
+            'dark': 'black',
+            'system': getSystemTheme() === 'dark' ? 'black' : 'lofi'
+          };
+          
+          document.documentElement.setAttribute('data-theme', themeMap[theme] || themeMap.system);
+        }
+
+        // Get saved preference or default to system
+        const savedTheme = localStorage.getItem('theme-preference') || 'system';
+        applyTheme(savedTheme);
+
+        // Global function to set theme
+        window.setTheme = function(theme) {
+          localStorage.setItem('theme-preference', theme);
+          applyTheme(theme);
+        };
+
+        // Listen for system theme changes (only if user hasn't set a preference)
+        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', function() {
+          const currentPreference = localStorage.getItem('theme-preference') || 'system';
+          if (currentPreference === 'system') {
+            applyTheme('system');
+          }
+        });
+      })();
+    </script>
   </head>
   <body>
     <div class="bg-base-100 drawer lg:drawer-open">

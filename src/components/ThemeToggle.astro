@@ -1,0 +1,44 @@
+---
+// ThemeToggle component for switching between system, light, and dark themes
+---
+
+<div class="form-control">
+  <label class="label">
+    <span class="label-text text-sm">Theme</span>
+  </label>
+  <select id="theme-select" class="select select-bordered select-sm w-full max-w-xs">
+    <option value="system">System</option>
+    <option value="light">Light</option>
+    <option value="dark">Dark</option>
+  </select>
+</div>
+
+<script>
+  // Initialize theme selector
+  function initThemeSelector() {
+    const themeSelect = document.getElementById('theme-select');
+    if (!themeSelect) return;
+
+    // Get current theme preference from localStorage
+    const savedTheme = localStorage.getItem('theme-preference') || 'system';
+    themeSelect.value = savedTheme;
+
+    // Listen for theme changes
+    themeSelect.addEventListener('change', (e) => {
+      const selectedTheme = e.target.value;
+      if (window.setTheme) {
+        window.setTheme(selectedTheme);
+      }
+    });
+  }
+
+  // Initialize when DOM is ready
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initThemeSelector);
+  } else {
+    initThemeSelector();
+  }
+
+  // Re-initialize on page navigation (for Astro transitions)
+  document.addEventListener('astro:page-load', initThemeSelector);
+</script>
