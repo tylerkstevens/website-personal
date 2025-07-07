@@ -1,236 +1,79 @@
 # Tyler Stevens Personal Portfolio Website
 
-I built this personal website using the Astrofy template, a free and open-source template for your Personal Portfolio Website built with Astro and TailwindCSS.
+Welcome to my personal website, built using the Astrofy template with Astro and TailwindCSS. This site serves as a central hub for my projects, content, and professional experience, with a particular focus on Bitcoin, hashrate heating, and engineering.
+
+## Features
+
+- **Blog & Media:** Explore my articles, podcasts, presentations, and interviews covering topics like Bitcoin mining, thermodynamics, and the heatpunk movement.
+- **Portfolio:** Discover detailed documentation of my engineering projects and website development work.
+- **Resume:** A comprehensive timeline of my work experience, education, and technical skills.
+- **About:** Learn more about my background and interests.
+- **Contact:** Find various ways to connect with me, including social media, email, and scheduling a call.
+- **Support My Work:** Information on how to support my ongoing work and content creation.
 
 ## Installation
 
-Run the following command in your terminal
+To get started with this project locally, follow these steps:
 
-```bash
-pnpm install
-```
+1. **Install dependencies:**
+   ```bash
+   pnpm install
+   ```
 
-Once the packages are installed you are ready to run astro. Astro comes with a built-in development server that has everything you need for project development. The astro dev command will start the local development server so that you can see your new website in action for the very first time.
+2. **Start the development server:**
+   ```bash
+   pnpm run dev
+   ```
+   This will start a local development server, and you can view the website in your browser.
 
-```bash
-pnpm run dev
-```
-
-The astro build command will compile the project into a dist folder, to be uploaded to your website hosting server.
-
-```bash
-pnpm run build
-```
+3. **Build for production:**
+   ```bash
+   pnpm run build
+   ```
+   This command compiles the project into a `dist` folder, ready for deployment.
 
 ## Tech Stack
 
-- [Astro](https://astro.build)
-- [tailwindcss](https://tailwindcss.com/)
-- [DaisyUI](https://daisyui.com/)
+- [Astro](https://astro.build) - The web framework for building fast, content-focused websites.
+- [TailwindCSS](https://tailwindcss.com/) - A utility-first CSS framework for rapid UI development.
+- [DaisyUI](https://daisyui.com/) - A Tailwind CSS component library for beautiful UI elements.
 
 ## Project Structure
 
-```php
+```
 ├── src/
-│   ├── components/
-│   │   ├── resume/
-│   │   │   ├── TimeLine
-│   │   ├── BaseHead.astro
-│   │   ├── Card.astro
-│   │   ├── Footer.astro
-│   │   ├── Header.astro
-│   │   └── HorizontalCard.astro
-│   │   └── SideBar.astro
-│   │   └── SideBarFooter.astro
-│   │   └── SideBarMenu.astro
-│   ├── content/
+│   ├── components/         # Reusable Astro components (e.g., Header, Footer, Cards)
+│   │   ├── resume/         # Components specific to the resume page
+│   ├── content/            # Markdown/MDX content for blog posts and portfolio items
 │   │   ├── blog/
-│   │   │   ├── post1.md
-│   │   │   ├── post2.md
-│   │   │   ├── post3.md
-│   │   │   └── post....md
 │   │   ├── portfolio/
-│   │   │   ├── portfolio1.md
-│   │   │   ├── portfolio2.md
-│   │   │   ├── portfolio3.md
-│   │   │   └── portfolio....md
-│   ├── layouts/
-│   │   └── BaseLayout.astro
-│   │   └── PortfolioLayout.astro
-│   │   └── PostLayout.astro
-│   └── pages/
+│   ├── layouts/            # Base layouts for different page types (e.g., BaseLayout, PostLayout)
+│   ├── pages/              # Website pages (e.g., index.astro, blog/[...page].astro, contact.astro)
 │   │   ├── blog/
-│   │   │   ├── [...page].astro
-│   │   │   ├── [slug].astro
 │   │   ├── portfolio/
-│   │   │   ├── [...page].astro
-│   │   │   ├── [slug].astro
-│   │   ├── 404.astro
-│   │   ├── about.astro
-│   │   └── contact.astro
-│   │   └── index.astro
-│   │   └── resume.astro
-│   │   └── support-my-work.astro
-│   ├── styles/
-│   │   └── global.css
-│   └── config.ts
-├── public/
-│   ├── blogimages/
-│   │   └── post1/
-│   │   └── post2/
-│   │   └── post3/
-│   ├── downloads/
-│   ├── portfolioimages/
-│   │   └── portfolio1/
-│   │   └── portfolio2/
-│   │   └── portfolio3/
-│   ├── favicon.png
-│   └── profile.webp
-├── astro.config.mjs
-├── tailwind.config.cjs
-├── package.json
-└── tsconfig.json
+│   ├── styles/             # Global CSS styles
+│   └── config.ts           # Global site configuration (title, description, etc.)
+├── public/                 # Static assets (images, favicon, downloads)
+├── astro.config.mjs        # Astro configuration file
+├── tailwind.config.cjs     # Tailwind CSS configuration
+├── package.json            # Project dependencies and scripts
+└── tsconfig.json           # TypeScript configuration
 ```
 
-### Site config
+## Customization and Content
 
-You can change global site configuration on '/src/config.ts' file:
-
-- **SITE_TITLE**: Default pages title.
-- **SITE_DESCRIPTION**: Default pages title.
-- **GENERATE_SLUG_FROM_TITLE**: By default Astrofy will generate the blog slug pages base on the article name. Set this var to false if you want to use the Astro file base (Compatible with Astrofy older versions).
-- **TRANSITION_API**: Enable and disable transition API
-
-### Components usage
-
-#### Layout Components
-
-The `BaseHead`, `Footer`, `Header`, and `SideBar` components are already included in the layout system. To change the website content you can edit the content of these components.
-
-##### SideBar
-
-In the Sidebar you can change your profilePicture, links to all your website pages, and your social icons.
-
-You can change your avatar shape using [mask classes](https://daisyui.com/components/mask/).
-
-The used social-icons are SVG form [BoxIcons](https://boxicons.com/) pack. You can replace the icons in the `SideBarFooter` component
-
-To add a new page in the sidebar go to the `SideBarMenu` component.
-
-```
-<li><a class="py-3 text-base" id="home" href="/">Home</a></li>
-```
-
-**Note**: In order to change the sidebar menu's active item, you need to setup the prop `sideBarActiveItemID` in the `BaseLayout` component of your new page and add that id to the link in the `SideBarMenu`
-
-#### TimeLine
-
-The timeline components are used to confirm the resume.
-
-```html
-<div class="time-line-container">
-  <TimeLineElement title="Element Title" subtitle="Subtitle">
-    Content that can contain
-    <div>divs</div>
-    and <span>anything else you want</span>.
-  </TimeLineElement>
-  ...
-</div>
-```
-
-#### Card & HorizontalCard
-
-The cards are primarly used for the Portfolio and the Blog components. They include a picture, a title, and a description.
-
-```html
-<HorizontalCard title="Card Title" img="imge_url" desc="Description" url="Link
-URL" target="Optional link target (_blank default)" badge="Optional badge"
-tags={['Array','of','tags']} />
-```
-
-#### Adding a Custom Component
-
-To add a custom component, you can create a .astro file in the components folder under the source folder.
-
-Components must follow this template. The ```---``` represents the code fence and uses Javascript and can be used for imports.
-
-The HTML component is the actual style of your new component.
-
-```html
----
-// Component Script (JavaScript)
----
-<!-- Component Template (HTML + JS Expressions) -->
-```
-
-For more details, see the [astro components](https://docs.astro.build/en/core-concepts/astro-components/) documentation here.
-
-### Layouts
-
-Include `BaseLayout` in each page you add and `PostLayout` to your post pages.
-
-The BaseLayout defines a general template for each new webpage you want to add. It imports constants SITE_TITLE and SITE_DESCRIPTION which can be modified in the ```../config``` folder. Data placed there can be imported anywhere using import.
-
-### Content
-
-You can add a [content collection](https://docs.astro.build/en/guides/content-collections/) in `/content/' folder, you will need add it at config.ts.
-
-#### config.ts
-
-Where you need to define your content collections, we define our content schemas too.
-
-#### Blog
-
-Add your `md` blog post in the `/content/blog/` or `/content/portfolio/` folder.
-
-##### Post format
-
-Add code with this format in the top of each post file.
-
-```
----
-title: "Post Title"
-description: "Description"
-pubDate: "Post date format(Sep 10 2022)"
-heroImage: "Post Hero Image URL"
----
-```
-
-### Pages
-
-#### Blog / Portfolio
-
-Blog and Portfolio use Astro's content collection to query post's `md`.
-
-##### [page].astro
-
-The `[page].astro` is the route to work with the paginated post list. You can change there the number of items listed for each page and the pagination button labels.
-
-##### [slug].astro
-
-The `[slug].astro` is the base route for every blog post, you can customize the page layout or behaviour, by default uses `content/blog` for content collection and `PostLayout` as layout.
-
-#### Static pages
-
-The other pages included in the template are static pages. The `index` page belongs to the root page. You can add your pages directly in the `/pages` folder and then add a link to those pages in the `sidebar` component.
-
-Feel free to modify the content included in the pages that the template contains or add the ones you need.
-
-### Theming
-
-To change the template theme change the `data-theme` attribute of the `<html>` tag in `BaseLayout.astro` file.
-
-You can choose among 30 themes available or create your custom theme. See themes available [here](https://daisyui.com/docs/themes/).
+- **Global Site Configuration:** Modify `src/config.ts` to change the site title, description, and other global settings.
+- **Theming:** The site uses DaisyUI themes. You can change the active theme by modifying the `data-theme` attribute in `src/layouts/BaseLayout.astro`.
+- **Content Collections:** Blog posts and portfolio items are managed as Markdown (`.md`) files within `src/content/blog/` and `src/content/portfolio/` respectively. Each content file includes frontmatter for metadata like title, description, and publication date.
+- **Components:** Custom components are located in `src/components/`. You can create new `.astro` files here for reusable UI elements.
 
 ## Sitemap
 
-The Sitemap is generated automatically when you build your website in the root of the domain. Please update the `robots.txt` file in the public folder with your site name URL for the Sitemap.
+A sitemap is automatically generated when you build the website. Ensure your `public/robots.txt` file is updated with your site's URL for proper indexing.
 
 ## Deploy
 
-You can deploy your site on your favourite static hosting service such as Vercel, Netlify, GitHub Pages, etc.
-
-The configuration for the deployment varies depending on the platform where you are going to do it. See the [official Astro information](https://docs.astro.build/en/guides/deploy/) to deploy your website.
+This Astro project can be deployed to various static hosting services like Vercel, Netlify, or GitHub Pages. Refer to the [official Astro deployment documentation](https://docs.astro.build/en/guides/deploy/) for platform-specific instructions.
 
 > **⚠️ CAUTION** </br>
 > The Blog pagination of this template is implemented using dynamic route parameters in its filename and for now this format is incompatible with SSR deploy configs, so please use the default static deploy options for your deployments.
@@ -241,4 +84,4 @@ Suggestions and pull requests are welcomed! Feel free to open a discussion or an
 
 ## License
 
-Astrofy is licensed under the MIT license — see the [LICENSE](https://github.com/manuelernestog/astrofy/blob/main/LICENSE) file for details.
+This project is licensed under the MIT license.
