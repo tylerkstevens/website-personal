@@ -1,13 +1,36 @@
 ---
 import '../styles/global.css';
+
 export interface Props {
-	title: string;
-	description: string;
-	image?: string;
-	ogType?: string;
+  title: string;
+  description: string;
+  image?: string;
+  ogType?: string;
 }
 
 const { title, description, image = '/profile.webp', ogType = 'website' } = Astro.props;
+
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+const ogImage = new URL(image.startsWith('http') ? image : image, Astro.site);
+
+const personSchema = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Tyler Stevens",
+  "url": "https://tylerstevens.me",
+  "jobTitle": "Founder & CEO",
+  "worksFor": {
+    "@type": "Organization",
+    "name": "Exergy"
+  },
+  "sameAs": [
+    "https://twitter.com/tylerkstevens",
+    "https://github.com/tylerkstevens",
+    "https://exergyheat.com",
+    "https://256foundation.org",
+    "https://heatpunks.org"
+  ]
+};
 ---
 
 <!-- Global Metadata -->
@@ -15,22 +38,26 @@ const { title, description, image = '/profile.webp', ogType = 'website' } = Astr
 <meta name="viewport" content="width=device-width,initial-scale=1" />
 <link rel="icon" type="image/png" href="/favicon.png" />
 <meta name="generator" content={Astro.generator} />
+<link rel="canonical" href={canonicalURL} />
 
 <!-- Primary Meta Tags -->
 <title>{title}</title>
 <meta name="title" content={title} />
 <meta name="description" content={description} />
 
-<!-- Open Graph / Facebook -->
+<!-- Open Graph -->
 <meta property="og:type" content={ogType} />
-<meta property="og:url" content={Astro.url} />
+<meta property="og:url" content={canonicalURL} />
 <meta property="og:title" content={title} />
 <meta property="og:description" content={description} />
-<meta property="og:image" content="https://www.tylerstevens.me/profile.webp" />
+<meta property="og:image" content={ogImage} />
 
 <!-- Twitter -->
 <meta property="twitter:card" content="summary_large_image" />
-<meta property="twitter:url" content={Astro.url} />
+<meta property="twitter:url" content={canonicalURL} />
 <meta property="twitter:title" content={title} />
 <meta property="twitter:description" content={description} />
-<meta property="twitter:image" content="https://www.tylerstevens.me/profile.webp?version=1" />
+<meta property="twitter:image" content={ogImage} />
+
+<!-- JSON-LD Structured Data -->
+<script type="application/ld+json" set:html={JSON.stringify(personSchema)} />

@@ -1,39 +1,182 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
+import TimeLineElement from "../components/TimeLine.astro";
+import ProjectCard from "../components/ProjectCard.astro";
 ---
 
-<BaseLayout title="About" sideBarActiveItemID="about">
-  <div class="mb-5">
-    <div class="text-3xl w-full font-bold">About</div>
+<BaseLayout title="About — Tyler Stevens" sideBarActiveItemID="about">
+
+  <!-- Bio narrative -->
+  <div class="mb-10 mt-5">
+    <h1 class="text-3xl font-bold tracking-tight text-base-content mb-6">About</h1>
+    <div class="prose prose-base max-w-2xl">
+      <p>
+        I'm a builder and entrepreneur at the intersection of Bitcoin and energy. I grew up a mechanical
+        engineer — studied it at Wisconsin, rowed Division I, went straight into aerospace at ULA working
+        thermal systems on the Vulcan rocket. But Bitcoin changed the direction. Specifically, the realization
+        that the heat coming off a Bitcoin miner isn't waste — it's a product.
+      </p>
+      <p>
+        That idea became <a href="https://exergyheat.com" target="_blank" rel="noopener noreferrer">Exergy</a>,
+        the company I founded to commercialize hashrate heating. We design and install
+        systems that use Bitcoin miners as the heat source for homes, businesses, and industrial
+        applications — lowering utility bills while supporting network decentralization. I also wrote
+        <a href="https://braiins.com/books/bitcoin-mining-heat-reuse" target="_blank" rel="noopener noreferrer">Bitcoin Mining Heat Reuse</a>,
+        published through Braiins, which became the go-to reference for the industry.
+      </p>
+      <p>
+        The work isn't just commercial. I help steward the open-source side of Bitcoin mining through
+        the <a href="https://256foundation.org" target="_blank" rel="noopener noreferrer">256 Foundation</a>,
+        where I sit on the board. I founded the
+        <a href="https://heatpunks.org" target="_blank" rel="noopener noreferrer">Hashrate Heatpunks</a>
+        community to connect people building in this space — it's now part of the 256 Foundation.
+        And in Denver, I co-founded <a href="https://denver.space" target="_blank" rel="noopener noreferrer">The Space</a>,
+        a member-run Bitcoin citadel where our community meets, the Exergy office lives, and Heatpunk
+        Summit happens every year.
+      </p>
+      <p>
+        Outside of work I'm into snowboarding, overlanding, cars, and anything mechanical. I like things
+        that are built to last.
+      </p>
+    </div>
   </div>
 
-  <div class="mb-10 text-justify">
-    Hey! My name is Tyler Stevens, an entrepreneur, bitcoiner and engineer. I'm heavily involved in the Rocky Mountain bitcoin community and hashrate heating industry. To stay active, I enjoy snowboarding, overlanding, camping and hiking. I am an automotive enthusiast who loves to tinker. Take a look around my website to see some more detail about my projects and passions.
+  <!-- Current roles -->
+  <div class="mb-10">
+    <h2 class="text-xl font-semibold tracking-tight text-base-content mb-4">Current focus</h2>
+    <div class="grid grid-cols-1 gap-3">
+      <ProjectCard
+        logo="/logos/exergy.png"
+        logoAlt="Exergy logo"
+        role="Founder & CEO"
+        name="Exergy"
+        description="Heating systems powered by hashrate. Offset utility costs, monetize waste heat."
+        url="https://exergyheat.com"
+      />
+      <ProjectCard
+        logo="/logos/256foundation.png"
+        logoAlt="256 Foundation logo"
+        role="Board Member"
+        name="256 Foundation"
+        description="Nonprofit protecting open-source Bitcoin mining software."
+        url="https://256foundation.org"
+      />
+      <ProjectCard
+        logo="/logos/heatpunks.png"
+        logoAlt="Hashrate Heatpunks logo"
+        role="Founder & Organizer"
+        name="Hashrate Heatpunks"
+        description="Community for hashrate heating practitioners. Under the 256 Foundation."
+        url="https://heatpunks.org"
+      />
+      <ProjectCard
+        logo="/logos/thespace.png"
+        logoAlt="The Space logo"
+        role="Co-Founder"
+        name="The Space"
+        description="Denver's Bitcoin citadel. Member-run, community-driven."
+        url="https://denver.space"
+      />
+    </div>
   </div>
 
-  <hr>
+  <!-- Career timeline -->
+  <div class="mb-10">
+    <h2 class="text-xl font-semibold tracking-tight text-base-content mb-6">Timeline</h2>
 
-  <div class="mb-10 text-justify">
-    On the <strong>Home</strong> page, you'll find social links and highlighted projects and content.
+    <div class="time-line-container mb-6">
+      <TimeLineElement
+        title="Founder & CEO — Exergy"
+        subtitle="January 2024 – Present · Denver, CO"
+      >
+        Founded Exergy to commercialize hashrate heating — designing and installing Bitcoin miner-based
+        thermal systems for homes and businesses. Developed the Heat Audit framework for evaluating
+        hashrate heating feasibility, covering HVAC integration, hydronic systems, utility optimization,
+        and thermo-economic modeling. Established block 828310.
+      </TimeLineElement>
+
+      <TimeLineElement
+        title="Board Member — 256 Foundation"
+        subtitle="February 2026 – Present"
+      >
+        Serving on the board of the 256 Foundation, a nonprofit dedicated to keeping Bitcoin mining
+        software open-source and accessible against proprietary control.
+      </TimeLineElement>
+
+      <TimeLineElement
+        title="Founder & Organizer — Hashrate Heatpunks"
+        subtitle="2024 – Present"
+      >
+        Founded the Hashrate Heatpunks community to connect practitioners building in the hashrate
+        heating space. Organizes events including the annual Heatpunk Summit. Community now operates
+        under the 256 Foundation umbrella.
+      </TimeLineElement>
+
+      <TimeLineElement
+        title="Co-Founder — The Space"
+        subtitle="April 2024 – Present · Denver, CO"
+      >
+        Co-founded and served as the first elected CEO of The Space, a grassroots, member-run Bitcoin
+        community hub in Denver. Hosts events, workspace, and the annual Heatpunk Summit.
+        Established block 836738.
+      </TimeLineElement>
+
+      <TimeLineElement
+        title="Author — Bitcoin Mining Heat Reuse"
+        subtitle="2024 · Published by Braiins"
+      >
+        Authored the definitive guide to hashrate heating. Free to read at braiins.com. Covers why
+        heat reuse matters, implementation strategies, cost savings analysis, and the future of
+        the industry.
+      </TimeLineElement>
+
+      <TimeLineElement
+        title="President — Denver BitDevs"
+        subtitle="2022 – April 2024 · Denver, CO"
+      >
+        Co-organizer and president of the local Denver BitDevs chapter — a technical Bitcoin
+        developer meetup series.
+      </TimeLineElement>
+
+      <TimeLineElement
+        title="Thermal Engineer — Vulcan Rocket Program"
+        subtitle="November 2022 – January 2024 · United Launch Alliance, Denver, CO"
+      >
+        Conducted heat transfer and thermodynamic analysis for the Vulcan Centaur Rocket Upgrades
+        Program. Contributed to early concept design for the booster reuse program, including thermal
+        protection system design trades. Provided on-console thermal support during tests and launches.
+      </TimeLineElement>
+
+      <TimeLineElement
+        title="Graduate Assistant Coach — Men's Rowing"
+        subtitle="Fall 2019 – Summer 2021 · University of Wisconsin"
+      >
+        Assistant coach for Wisconsin Men's Rowing, guiding Division I varsity athletes. Developed
+        leadership, organizational, and coaching skills within a competitive NCAA program.
+      </TimeLineElement>
+
+    </div>
   </div>
 
-  <div class="mb-10 text-justify">
-    The <strong>Blog & Media</strong> page links to all of my writing and content across various platforms.
+  <!-- Education -->
+  <div class="mb-10">
+    <h2 class="text-xl font-semibold tracking-tight text-base-content mb-6">Education</h2>
+    <div class="time-line-container">
+      <TimeLineElement
+        title="M.S. Mechanical Engineering — Thermal Focus"
+        subtitle="Sept 2020 – Aug 2021 · University of Wisconsin–Madison"
+      >
+        Graduate Assistant Coach for Men's Rowing while completing master's degree with thermal
+        engineering focus.
+      </TimeLineElement>
+      <TimeLineElement
+        title="B.S. Mechanical Engineering — Minor in Mathematics"
+        subtitle="Sept 2015 – May 2020 · University of Wisconsin–Madison"
+      >
+        NCAA Division I student-athlete, Varsity Men's Rowing. Academic All-Big Ten. Student Athlete
+        of the Year honoree.
+      </TimeLineElement>
+    </div>
   </div>
 
-  <div class="mb-10 text-justify">
-    Under <strong>Portfolio</strong>, you can find documenation on some of my favorite projects and work.
-  </div>
-
-  <div class="mb-10 text-justify">
-    The <strong>Resume</strong> page outlines the timeline of my experience.
-  </div>
-
-  <div class="mb-10 text-justify">
-    You can find links to all of my online presence on the <strong>Contact</strong> page.
-  </div>
-
-  <div class="mb-10 text-justify">
-    If you're feeling generous, you can donate to me directly via links on the <strong>Support My Work</strong> page.
-  </div>
 </BaseLayout>

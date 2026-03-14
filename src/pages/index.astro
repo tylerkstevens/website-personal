@@ -1,79 +1,148 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
-import HorizontalCard from "../components/HorizontalCard.astro";
+import ProjectCard from "../components/ProjectCard.astro";
+import ContentCard from "../components/ContentCard.astro";
 import { getCollection } from "astro:content";
-import createSlug from "../lib/createSlug"
+import createSlug from "../lib/createSlug";
+import { Image } from "astro:assets";
 
-const posts = (await getCollection("blog")).sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+// Get most recent 3 content items (posts + appearances combined)
+const posts = await getCollection("posts");
+const appearances = await getCollection("appearances");
 
-const last_posts = posts.slice(0, 3);
+const allContent = [
+  ...posts.map(p => ({
+    title: p.data.title,
+    description: p.data.description,
+    date: p.data.pubDate,
+    type: 'post' as const,
+    url: `/content/${createSlug(p.data.title, p.id)}`,
+    thumbnail: p.data.heroImage,
+    badge: p.data.badge,
+  })),
+  ...appearances.map(a => ({
+    title: a.data.title,
+    description: a.data.description,
+    date: a.data.date,
+    type: a.data.type as 'talk' | 'podcast',
+    url: a.data.url,
+    thumbnail: a.data.thumbnail,
+    badge: undefined,
+  })),
+].sort((a, b) => b.date.valueOf() - a.date.valueOf()).slice(0, 3);
 ---
 
 <BaseLayout sideBarActiveItemID="home">
+  <!-- Hero -->
   <div class="pb-12 mt-5">
-    <div class="text-xl py-1">Howdy 👋</div>
-    <div class="text-5xl font-bold">I'm Tyler Stevens</div>
-    <div class="text-3xl py-3 font-bold">A Bitcoin Maximalist, Gear Head & Engineer</div>
-    <div class="py-2">
-      <text class="text-lg">
-        Welcome to my personal website! Take a look around to see some of my recent projects, appearances, content, and experience.
-        If you want to learn more or get in touch, connect with me at the links below.
-      </text>
-    </div>
-    <div class="flex justify-center flex-wrap mt-8">
-      <a href="https://x.com/tylerkstevens" target="_blank" class="btn btn-outline mr-2 mb-2">Follow on X</a>
-      <a href="https://primal.net/tyler" target="_blank" class="btn btn-outline mr-2 mb-2">Follow on nostr</a>
-      <a href="https://t.me/tylerkstevens" target="_blank" class="btn btn-outline mr-2 mb-2">Telegram chat</a>
-      <a href="mailto:contact@tylerstevens.me" target="_blank" class="btn btn-outline mr-2 mb-2">Email me</a>
-      <a href="https://cal.com/tylerkstevens" target="_blank" class="btn btn-outline mr-2 mb-2">Book a call</a>
-    </div>
-  </div>
-
-  <div>
-    <div class="text-3xl w-full font-bold mb-2">What I've been up to</div>
-  </div>
-
-  <HorizontalCard
-    title="Author - Bitcoin Mining Heat Reuse"
-    img="/bitcoin_mining_heatreuse_cover_draft.jpg"
-    desc="I wrote a book exploring the emerging industry of heating with bitcoin miners, aiming to educate individuals and professionals in both the bitcoin and heating sectors. This comprehensive guide examines why this technology matters, who can benefit from it, how to implement it, and provides insights into potential savings, challenges, and future trends."
-    url="https://braiins.com/books/bitcoin-mining-heat-reuse"
-    badge="NEW BOOK"
-  />
-  <div class="divider my-0"></div>  
-  <HorizontalCard
-    title="Co-Founder & CEO, Exergy"
-    img="/Logo1_black_on_blue_rectangle.png"
-    desc="Exergy is a heating company, powered by hashrate. Offset utility costs with maximum efficiency and monetized heat. We size, design and install heat that pays. Established block 828310. Click to see how much you can save."
-    url="http://exergyheat.com"
-    badge="MY BUSINESS"
-  />
-  <div class="divider my-0"></div>
-  <HorizontalCard
-    title="Co-Founder & CEO, The Space"
-    img="/TheSpace_Logo1.png"
-    desc="The Space is a member-run bitcoin community hub with an open source model. Our location in Denver, CO offers educational events, workspace and community building resources. Established block 836738."
-    url="https://denver.space"
-    badge="COMMUNITY INVOLVEMENT"
-  />
-
-  <div>
-    <div class="text-3xl w-full font-bold mb-5 mt-10">Latest content</div>
-  </div>
-
-  {
-    last_posts.map((post) => (
-      <>
-        <HorizontalCard
-          title={post.data.title}
-          img={post.data.heroImage}
-          desc={post.data.description}
-          url={"/blog/" + createSlug(post.data.title, post.slug)}
-          target="_self"
-          badge={post.data.badge}
+    <div class="flex items-start gap-6 mb-6">
+      <div class="shrink-0">
+        <Image
+          src="/profile.webp"
+          width={80}
+          height={80}
+          format="webp"
+          quality={90}
+          alt="Tyler Stevens"
+          class="rounded-full w-20 h-20 object-cover object-[50%_12%] border-2 border-base-300"
         />
-        <div class="divider my-0" />
-      </>
-    ))
-  }
+      </div>
+      <div>
+        <h1 class="text-3xl font-bold tracking-tight text-base-content">Tyler Stevens</h1>
+        <p class="text-base-content/60 mt-0.5">Founder &amp; CEO, Exergy · Denver, CO</p>
+      </div>
+    </div>
+    <div class="prose prose-base max-w-2xl">
+      <p>
+        I build things at the intersection of Bitcoin and energy. Most of my time goes into
+        <a href="https://exergyheat.com" target="_blank" rel="noopener noreferrer" class="font-medium no-underline hover:underline">Exergy</a>,
+        the company I founded to champion hashrate heating — turning Bitcoin miners into intelligent,
+        efficient heat sources for homes and businesses. I wrote the book on it:
+        <a href="https://braiins.com/books/bitcoin-mining-heat-reuse" target="_blank" rel="noopener noreferrer" class="font-medium no-underline hover:underline">Bitcoin Mining Heat Reuse</a>,
+        published through Braiins and free to read.
+      </p>
+      <p>
+        Beyond Exergy, I serve on the board of the
+        <a href="https://256foundation.org" target="_blank" rel="noopener noreferrer" class="font-medium no-underline hover:underline">256 Foundation</a>
+        — a nonprofit protecting open-source Bitcoin mining software and hardware.
+        I founded the <a href="https://heatpunks.org" target="_blank" rel="noopener noreferrer" class="font-medium no-underline hover:underline">Hashrate Heatpunks</a>
+        community, now part of the 256 Foundation, and co-founded
+        <a href="https://denver.space" target="_blank" rel="noopener noreferrer" class="font-medium no-underline hover:underline">The Space</a>
+        — Denver's Bitcoin citadel where the office lives and Heatpunk Summit happens each year.
+      </p>
+    </div>
+  </div>
+
+  <!-- What I'm working on -->
+  <div class="mb-2">
+    <h2 class="text-xl font-semibold tracking-tight text-base-content mb-4">What I'm working on</h2>
+  </div>
+
+  <div class="grid grid-cols-1 gap-3 mb-12">
+    <ProjectCard
+      logo="/logos/exergy.png"
+      logoAlt="Exergy logo"
+      role="Founder & CEO"
+      name="Exergy"
+      description="Home and business heating systems powered by hashrate. We size, design, and facilitate installation of hashrate heating solutions that offset utility costs and monetize energy for homes and businesses."
+      url="https://exergyheat.com"
+    />
+    <ProjectCard
+      logo="/logos/256foundation.png"
+      logoAlt="256 Foundation logo"
+      role="Board Member"
+      name="256 Foundation"
+      description="A nonprofit challenging proprietary control over the bitcoin mining industry. Committed to keeping bitcoin mining hardware and software open-source and accessible."
+      url="https://256foundation.org"
+    />
+    <ProjectCard
+      logo="/logos/heatpunks.png"
+      logoAlt="Hashrate Heatpunks logo"
+      role="Founder & Organizer"
+      name="Hashrate Heatpunks"
+      description="A growing community of enthusiasts and professionals who believe heat reuse is one of Bitcoin mining's most important frontiers. Now under the 256 Foundation."
+      url="https://heatpunks.org"
+    />
+    <ProjectCard
+      logo="/logos/thespace.png"
+      logoAlt="The Space logo"
+      role="Co-Founder"
+      name="The Space"
+      description="Denver's Bitcoin citadel — a member-run non-profit community hub for events, workspace, education, and the annual Heatpunk Summit."
+      url="https://denver.space"
+    />
+    <ProjectCard
+      logo="/logos/book.png"
+      logoAlt="Bitcoin Mining Heat Reuse book cover"
+      role="Author"
+      name="Bitcoin Mining Heat Reuse"
+      description="The definitive guide to hashrate heating. Free to read, published by Braiins. I wrote this to map the emerging industry of using Bitcoin miners as intelligent heat sources."
+      url="https://braiins.com/books/bitcoin-mining-heat-reuse"
+    />
+  </div>
+
+  <!-- Recent Content -->
+  {allContent.length > 0 && (
+    <div>
+      <div class="flex items-center justify-between mb-4">
+        <h2 class="text-xl font-semibold tracking-tight text-base-content">Recent content</h2>
+        <a href="/content" class="text-sm text-base-content/50 hover:text-base-content transition-colors">
+          View all →
+        </a>
+      </div>
+      <div class="divide-y divide-base-200">
+        {allContent.map((item) => (
+          <ContentCard
+            title={item.title}
+            description={item.description}
+            date={item.date}
+            type={item.type}
+            url={item.url}
+            thumbnail={item.thumbnail}
+            badge={item.badge}
+          />
+        ))}
+      </div>
+    </div>
+  )}
 </BaseLayout>

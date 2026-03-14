@@ -1,0 +1,89 @@
+---
+import type { Page } from "astro";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import ContentCard from "../../components/ContentCard.astro";
+import { getCollection } from "astro:content";
+import createSlug from "../../lib/createSlug";
+
+type ContentItem = {
+  title: string;
+  description: string;
+  date: Date;
+  type: "post" | "talk" | "podcast";
+  url: string;
+  thumbnail?: string;
+};
+
+export async function getStaticPaths({ paginate }) {
+  const posts = await getCollection("posts");
+  const appearances = await getCollection("appearances");
+
+  const allContent = [
+    ...posts.map(p => ({
+      title: p.data.title,
+      description: p.data.description,
+      date: p.data.pubDate,
+      type: "post" as const,
+      url: p.data.externalUrl ?? `/content/${createSlug(p.data.title, p.id)}`,
+      thumbnail: p.data.heroImage,
+    })),
+    ...appearances.map(a => ({
+      title: a.data.title,
+      description: a.data.description,
+      date: a.data.date,
+      type: a.data.type as "talk" | "podcast",
+      url: a.data.url,
+      thumbnail: a.data.thumbnail,
+    })),
+  ].sort((a, b) => b.date.valueOf() - a.date.valueOf());
+
+  return paginate(allContent, { pageSize: 10 });
+}
+
+const { page } = Astro.props as { page: Page<ContentItem> };
+---
+
+<BaseLayout title="Content — Tyler Stevens" sideBarActiveItemID="content">
+  <div class="mt-5 mb-8">
+    <h1 class="text-3xl font-bold tracking-tight text-base-content mb-2">Content</h1>
+    <p class="text-base-content/60">Writing, conference talks, and podcast appearances.</p>
+  </div>
+
+  {page.data.length === 0 ? (
+    <div class="bg-base-200 rounded-xl p-6 text-center">
+      <p class="text-base-content/60">No content yet. Check back soon.</p>
+    </div>
+  ) : (
+    <div class="divide-y divide-base-200">
+      {page.data.map((item) => (
+        <ContentCard
+          title={item.title}
+          description={item.description}
+          date={item.date}
+          type={item.type}
+          url={item.url}
+          thumbnail={item.thumbnail}
+        />
+      ))}
+    </div>
+  )}
+
+  <div class="flex justify-between mt-8">
+    {page.url.prev ? (
+      <a href={page.url.prev} class="btn btn-ghost btn-sm">
+        <svg class="h-4 w-4 fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+          <path d="M15.41,16.58L10.83,12L15.41,7.41L14,6L8,12L14,18L15.41,16.58Z" />
+        </svg>
+        Newer
+      </a>
+    ) : <div />}
+    {page.url.next ? (
+      <a href={page.url.next} class="btn btn-ghost btn-sm">
+        Older
+        <svg class="h-4 w-4 fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+          <path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" />
+        </svg>
+      </a>
+    ) : <div />}
+  </div>
+</BaseLayout>

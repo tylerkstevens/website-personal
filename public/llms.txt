@@ -1,0 +1,36 @@
+# Tyler Stevens — tylerstevens.me
+
+Tyler Stevens is a builder at the intersection of Bitcoin and energy.
+
+## About
+
+Founder & CEO of Exergy (https://exergy.energy), commercializing hashrate heating —
+using Bitcoin miners as intelligent heat sources for homes and businesses.
+
+Board Member, 256 Foundation (https://256foundation.org) — nonprofit protecting
+open-source Bitcoin mining software.
+
+Founder & Organizer, Hashrate Heatpunks (https://heatpunks.org) — community for
+hashrate heating practitioners, under the 256 Foundation.
+
+Co-Founder, The Space (https://denver.space) — Denver's Bitcoin citadel.
+
+Author, "Bitcoin Mining Heat Reuse" — free PDF at:
+https://braiins.com/books/bitcoin-mining-heat-reuse
+
+## Site Pages
+
+- Home: https://tylerstevens.me/
+- About: https://tylerstevens.me/about
+- Content (posts, talks, podcasts): https://tylerstevens.me/content
+- Contact: https://tylerstevens.me/contact
+- RSS Feed: https://tylerstevens.me/rss.xml
+
+## Contact
+
+- X: https://x.com/tylerkstevens
+- Nostr: https://primal.net/tyler
+- Telegram: https://t.me/tylerkstevens
+- Email: contact@tylerstevens.me
+- GitHub: https://github.com/tylerkstevens
+- Signal: tylerkstevens.97

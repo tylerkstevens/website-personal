@@ -1,34 +1,18 @@
 ---
-import { CollectionEntry, getCollection } from "astro:content";
-import { BlogSchema } from "../../content/config";
-import PostLayout from "../../layouts/PostLayout.astro";
-import createSlug from "../../lib/createSlug"
+import { getCollection } from "astro:content";
+import createSlug from "../../lib/createSlug";
 
 export async function getStaticPaths() {
-  const postEntries = await getCollection("blog");
-  return postEntries.map((entry) => ({
-    params: { slug: createSlug(entry.data.title, entry.slug) },
-    props: { entry },
+  const posts = await getCollection("posts");
+  return posts.map((entry) => ({
+    params: { slug: createSlug(entry.data.title, entry.id) },
+    props: { slug: createSlug(entry.data.title, entry.id) },
   }));
 }
 
-interface Props {
-  entry: CollectionEntry<"blog">;
-}
-
-const { entry } = Astro.props;
-const post: BlogSchema = entry.data;
-const { Content } = await entry.render();
+const { slug } = Astro.props;
+const redirectTo = `/content/${slug}`;
 ---
-
-<PostLayout
-  title={post.title}
-  description={post.description}
-  pubDate={post.pubDate}
-  heroImage={post.heroImage}
-  updatedDate={post.updatedDate}
-  badge={post.badge}
-  tags={post.tags}
->
-  <Content />
-</PostLayout>
+<meta http-equiv="refresh" content={`0; url=${redirectTo}`} />
+<script define:vars={{ redirectTo }}>window.location.replace(redirectTo);</script>
+<p>Redirecting to <a href={redirectTo}>{redirectTo}</a>...</p>

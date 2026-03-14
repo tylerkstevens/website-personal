@@ -1,18 +1,37 @@
-.time-line-container>div:last-child .education__time>.education__line {
-    display: none;
+/* Inter font */
+@import '@fontsource/inter/400.css';
+@import '@fontsource/inter/500.css';
+@import '@fontsource/inter/600.css';
+@import '@fontsource/inter/700.css';
+
+/* Timeline layout */
+.time-line-container > div:last-child .education__time > .education__line {
+  display: none;
 }
-.contact-icon {
-    display: flex;
-    align-items: center;
-    margin-left: 0;
-    padding-right: 12px; /* Adjust based on your design */
-    width: 48px; /* Adjust if you want a specific width */
-    height: 48px; /* Ensures icons have a standard size */
+
+/* Base typography */
+body {
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code, pre, kbd, samp {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
 }
 
 hr {
-    margin-top: 20px; /* Adjusts the space above the line */
-    margin-bottom: 20px; /* Adjusts the space below the line */
-    border-color: #ccc; /* Sets the color of the line */
-    border-width: 1px; /* Sets the thickness of the line */
+  margin-top: 1.5rem;
+  margin-bottom: 1.5rem;
+  border-color: oklch(var(--b3));
+  border-width: 1px;
+}
+
+/* Prose overrides for editorial feel */
+.prose {
+  max-width: 72ch;
+}
+
+.prose code {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
 }
