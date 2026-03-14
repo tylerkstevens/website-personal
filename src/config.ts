@@ -1,7 +1,6 @@
-// Place any global data in this file.
-// You can import this data from anywhere in your site by using the `import` keyword.
+// Global site configuration
 
-export const SITE_TITLE = 'Tyler Stevens - Personal Site';
-export const SITE_DESCRIPTION = 'Welcome to the personal website of Tyler Stevens. Take a look around!';
-export const GENERATE_SLUG_FROM_TITLE = true
-export const TRANSITION_API = true
+export const SITE_TITLE = 'Tyler Stevens';
+export const SITE_DESCRIPTION = 'Founder & CEO of Exergy. Builder at the intersection of Bitcoin and energy. Hashrate heating, open-source mining, and Bitcoin community.';
+export const GENERATE_SLUG_FROM_TITLE = true;
+export const TRANSITION_API = true;

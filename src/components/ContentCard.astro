@@ -1,0 +1,38 @@
+---
+import dayjs from "dayjs";
+
+export interface Props {
+  title: string;
+  description: string;
+  date: Date;
+  type: 'post' | 'talk' | 'podcast';
+  url: string;
+  thumbnail?: string;
+}
+
+const { title, description, date, url, thumbnail } = Astro.props;
+
+const isExternal = url.startsWith('http');
+const target = isExternal ? '_blank' : '_self';
+const rel = isExternal ? 'noopener noreferrer' : undefined;
+
+const formattedDate = dayjs(date).format('MMM D, YYYY');
+---
+
+<a
+  href={url}
+  target={target}
+  rel={rel}
+  class="content-card group flex items-start gap-4 p-4 rounded-xl hover:bg-base-200 transition-colors duration-150"
+>
+  {thumbnail && (
+    <div class="shrink-0 w-16 h-16 rounded-lg overflow-hidden bg-base-300">
+      <img src={thumbnail} alt={title} class="w-full h-full object-cover" loading="lazy" />
+    </div>
+  )}
+  <div class="flex-1 min-w-0">
+    <span class="text-xs text-base-content/40">{formattedDate}</span>
+    <h3 class="font-semibold text-base-content leading-snug mb-1 group-hover:text-primary transition-colors">{title}</h3>
+    <p class="text-sm text-base-content/60 leading-relaxed line-clamp-2">{description}</p>
+  </div>
+</a>

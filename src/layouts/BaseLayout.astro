@@ -19,10 +19,10 @@ const {
 <!doctype html>
 <html lang="en">
   <head>
-    <BaseHead title={title} description={description} image={image} , ogType={ogType} />
+    <BaseHead title={title} description={description} image={image} ogType={ogType} />
     {TRANSITION_API && <ViewTransitions />}
     <script>
-      // Theme management - runs before page render to prevent flash
+      // Theme management — runs before page render to prevent flash
       (function() {
         function getSystemTheme() {
           return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
@@ -30,25 +30,26 @@ const {
 
         function applyTheme(theme) {
           const themeMap = {
-            'light': 'lofi',
-            'dark': 'black',
-            'system': getSystemTheme() === 'dark' ? 'black' : 'lofi'
+            'light': 'editorial_light',
+            'dark': 'editorial_dark',
+            'system': getSystemTheme() === 'dark' ? 'editorial_dark' : 'editorial_light'
           };
-          
-          document.documentElement.setAttribute('data-theme', themeMap[theme] || themeMap.system);
+          document.documentElement.setAttribute('data-theme', themeMap[theme] || themeMap['system']);
         }
 
-        // Get saved preference or default to system
         const savedTheme = localStorage.getItem('theme-preference') || 'system';
         applyTheme(savedTheme);
 
-        // Global function to set theme
         window.setTheme = function(theme) {
           localStorage.setItem('theme-preference', theme);
           applyTheme(theme);
         };
 
-        // Listen for system theme changes (only if user hasn't set a preference)
+        // Astro View Transitions resets <html> attributes on each swap — re-apply immediately
+        document.addEventListener('astro:after-swap', function() {
+          applyTheme(localStorage.getItem('theme-preference') || 'system');
+        });
+
         window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', function() {
           const currentPreference = localStorage.getItem('theme-preference') || 'system';
           if (currentPreference === 'system') {
