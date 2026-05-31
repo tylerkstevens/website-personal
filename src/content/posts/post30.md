@@ -18,6 +18,6 @@ Listen in to learn why I think hashrate heating is not just a cool new use case 
 
 ### Get a physical copy or download the free e-book
 
-[Read the full book](https://braiins.com/books/bitcoin-mining-heat-reuse)
+[Read the full book](https://www.amazon.com/dp/B0GYJ8QDK6)
 
 ---
