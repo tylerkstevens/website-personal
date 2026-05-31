@@ -20,6 +20,6 @@ Looking to hash for heat at home? There's more to consider.
 
 ### Get a physical copy or download the free e-book
 
-[Read the full book](https://braiins.com/books/bitcoin-mining-heat-reuse)
+[Read the full book](https://www.amazon.com/dp/B0GYJ8QDK6)
 
 ---
