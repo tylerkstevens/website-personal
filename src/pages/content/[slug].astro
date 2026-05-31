@@ -18,6 +18,11 @@ interface Props {
 
 const { entry } = Astro.props;
 const post = entry.data;
+
+if (post.externalUrl) {
+  return Astro.redirect(post.externalUrl);
+}
+
 const { Content } = await render(entry);
 ---
 
