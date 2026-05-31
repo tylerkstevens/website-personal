@@ -16,7 +16,7 @@ const allContent = [
     description: p.data.description,
     date: p.data.pubDate,
     type: 'post' as const,
-    url: `/content/${createSlug(p.data.title, p.id)}`,
+    url: p.data.externalUrl ?? `/content/${createSlug(p.data.title, p.id)}`,
     thumbnail: p.data.heroImage,
     badge: p.data.badge,
   })),
