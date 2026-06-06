@@ -5,4 +5,5 @@ pubDate: "2025-07-08"
 heroImage: "/logos/hashrateup.png"
 externalUrl: "https://x.com/HashrateUp/status/1942658333841973537?s=20"
 tags: ["bitcoin", "mining", "energy", "heating", "heatpunk"]
+badge: "PODCAST"
 ---

@@ -1,7 +1,7 @@
 ---
 title: "Podcast Rip With Compass Mining - Building The Space"
-description: "How to we built a community run bitcoin citadel from scratch."
-pubDate: "Octboer 29 2024"
+description: "Wyatt O'Rourke and I joined Jarrett from Compass Mining to talk about how we built The Space — Denver's bitcoin community hub — from the ground up."
+pubDate: "2024-10-29"
 heroImage: "/blogimages/post12/compass_space_podcast.jpeg"
 externalUrl: "https://t.co/QREWJghBPp"
 tags: ["bitcoin","mining","community","education"]

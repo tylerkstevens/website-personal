@@ -1,11 +1,11 @@
 ---
 title: "ASICs Optimized for Heat, not Efficiency, will Decentralize Mining"
 description: "Will we see bitcoin ASICs designed for higher operating temperature and heat reuse? I go into the details with my first publication on the Braiins Blog!"
-pubDate: "April 22 2024"
+pubDate: "2024-04-22"
 heroImage: "/blogimages/post5/BraiinsBlog_ASICchipTemp_CoverImage.png"
 externalUrl: "https://braiins.com/blog/asics-optimized-for-heat-not-efficiency-will-decentralize-mining"
 tags: ["bitcoin","mining","thermodynamics","energy"]
-
+badge: "BLOG"
 ---
 
 Read the full article <a href="https://braiins.com/blog/asics-optimized-for-heat-not-efficiency-will-decentralize-mining" target="_blank">here</a>.

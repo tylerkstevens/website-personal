@@ -1,7 +1,7 @@
 ---
 title: "Podcast Rip With Trevor Bello of the Build a Mine Podcast - Hashrate Heatpunks"
-description: "A grass roots bitcoin citadel. Member run, with a FOSS blueprint."
-pubDate: "November 14 2024"
+description: "My first podcast interview on hashrate heating — Trevor Bello and I dig into the thermodynamics, the heatpunk movement, and why miners belong in the home."
+pubDate: "2024-11-14"
 heroImage: "/blogimages/post14/hashrate_heatpunks_podcast.jpg"
 externalUrl: "https://youtu.be/DWDM_AMK0-8?si=opUWskqaisNbcSK9"
 tags: ["bitcoin","mining","energy","heating","heatpunk"]

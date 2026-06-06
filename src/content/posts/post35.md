@@ -5,4 +5,5 @@ pubDate: "2025-06-12"
 heroImage: "/logos/book.png"
 externalUrl: "https://x.com/tylerkstevens/status/1933169573974491457?s=20"
 tags: ["bitcoin", "mining", "energy", "heating", "heatpunk"]
+badge: "VIDEO"
 ---

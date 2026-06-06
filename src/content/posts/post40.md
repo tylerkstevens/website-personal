@@ -5,4 +5,5 @@ pubDate: "2025-11-19"
 heroImage: "/logos/bitcoinpark.webp"
 externalUrl: "https://x.com/bitcoinpark_/status/1991160325471715754?s=20"
 tags: ["bitcoin", "mining", "energy", "heating", "heatpunk"]
+badge: "KEYNOTE"
 ---
