@@ -1,7 +1,7 @@
 ---
 title: "Podcast Rip With Stephan Livera - Bitcoin Space Denver"
-description: "A grass roots bitcoin citadel. Member run, with a FOSS blueprint."
-pubDate: "November 6 2024"
+description: "Eric Yakes and I joined Stephan Livera to discuss The Space — Denver's first member-run bitcoin citadel, built from the ground up by the community."
+pubDate: "2024-11-06"
 heroImage: "/blogimages/post13/stephan_livera_podcast.jpeg"
 externalUrl: "https://www.youtube.com/watch?v=MyPaMvg8aXk"
 tags: ["bitcoin","community","education"]

@@ -8,9 +8,10 @@ export interface Props {
   type: 'post' | 'talk' | 'podcast';
   url: string;
   thumbnail?: string;
+  badge?: string;
 }
 
-const { title, description, date, url, thumbnail } = Astro.props;
+const { title, description, date, url, thumbnail, badge } = Astro.props;
 
 const isExternal = url.startsWith('http');
 const target = isExternal ? '_blank' : '_self';
@@ -31,8 +32,23 @@ const formattedDate = dayjs(date).format('MMM D, YYYY');
     </div>
   )}
   <div class="flex-1 min-w-0">
-    <span class="text-xs text-base-content/40">{formattedDate}</span>
-    <h3 class="font-semibold text-base-content leading-snug mb-1 group-hover:text-primary transition-colors">{title}</h3>
+    <div class="flex items-center gap-2 mb-0.5">
+      <span class="text-xs text-base-content/40">{formattedDate}</span>
+      {badge && (
+        <span class="text-xs font-medium px-1.5 py-0.5 rounded bg-base-300 text-base-content/50 tracking-wide uppercase">
+          {badge}
+        </span>
+      )}
+    </div>
+    <h3 class="font-semibold text-base-content leading-snug mb-1 group-hover:text-primary transition-colors flex items-start gap-1">
+      <span>{title}</span>
+      {isExternal && (
+        <svg class="shrink-0 mt-0.5 w-3.5 h-3.5 text-base-content/25 group-hover:text-primary/50 transition-colors" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+          <path d="M11 3a1 1 0 100 2h2.586l-6.293 6.293a1 1 0 101.414 1.414L15 6.414V9a1 1 0 102 0V4a1 1 0 00-1-1h-5z" />
+          <path d="M5 5a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2v-3a1 1 0 10-2 0v3H5V7h3a1 1 0 000-2H5z" />
+        </svg>
+      )}
+    </h3>
     <p class="text-sm text-base-content/60 leading-relaxed line-clamp-2">{description}</p>
   </div>
 </a>

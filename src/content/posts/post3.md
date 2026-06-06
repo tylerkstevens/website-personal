@@ -1,7 +1,7 @@
 ---
 title: "Denver BitDevs - Halving Party Panel Discussion"
 description: "Denver BitDevs, in colaboration with The Mining Pod, put together a sponsored bitcoin halving party for the local Rocky Mountain bitcoin community."
-pubDate: "April 20 2024"
+pubDate: "2024-04-20"
 heroImage: "/blogimages/post3/halvingparty_header.png"
 externalUrl: "https://www.youtube.com/live/4shWzv4x_Gw?si=w1snilCED9OP0WIQ&t=4671"
 tags: ["bitcoin","mining","energy"]

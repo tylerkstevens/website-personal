@@ -1,7 +1,7 @@
 ---
 title: "Podcast With Jarrett at Compass Mining - Exploring Bitcoin Heat Reuse"
 description: "Can Bitcoin mining evolve into reliable and high performance electric heating... that pays you?"
-pubDate: "January 21 2025"
+pubDate: "2025-01-21"
 heroImage: "/blogimages/post17/CompassHeatReusePod.jpeg"
 externalUrl: "https://t.co/SSCGzAIZZo"
 tags: ["bitcoin","mining","energy","heating","heatpunk"]

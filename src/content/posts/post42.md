@@ -5,4 +5,5 @@ pubDate: "2026-03-10"
 heroImage: "/logos/heatpunks.png"
 externalUrl: "https://heatpunks.org/education"
 tags: ["bitcoin", "mining", "energy", "heating", "heatpunk", "community"]
+badge: "VIDEO"
 ---

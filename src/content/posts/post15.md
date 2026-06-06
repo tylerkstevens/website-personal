@@ -1,7 +1,7 @@
 ---
 title: "A Heatpunks Manifesto - Presentation at The Mining Conference"
 description: "Satoshi invented a way to monetize heat without risk. This is the future of hashrate."
-pubDate: "September 29 2024"
+pubDate: "2024-09-29"
 heroImage: "/blogimages/post15/heatpunks_manifesto_presentation.png"
 externalUrl: "https://www.youtube.com/watch?v=iN7jgALH67U&t=2s"
 tags: ["bitcoin","mining","energy","heating","heatpunk"]

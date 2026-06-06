@@ -12,6 +12,7 @@ type ContentItem = {
   type: "post" | "talk" | "podcast";
   url: string;
   thumbnail?: string;
+  badge?: string;
 };
 
 export async function getStaticPaths({ paginate }) {
@@ -26,6 +27,7 @@ export async function getStaticPaths({ paginate }) {
       type: "post" as const,
       url: p.data.externalUrl ?? `/content/${createSlug(p.data.title, p.id)}`,
       thumbnail: p.data.heroImage,
+      badge: p.data.badge,
     })),
     ...appearances.map(a => ({
       title: a.data.title,
@@ -63,6 +65,7 @@ const { page } = Astro.props as { page: Page<ContentItem> };
           type={item.type}
           url={item.url}
           thumbnail={item.thumbnail}
+          badge={item.badge}
         />
       ))}
     </div>

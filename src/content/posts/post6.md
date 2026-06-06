@@ -1,7 +1,7 @@
 ---
 title: "Bitcoin and Thermodynamics - CU Bitcoin Talk on Mining for Heat"
 description: "My first bitcoin presentation covered bitcoin and energy fundamentals and dove into the details on the value of miner waste heat reuse"
-pubDate: "April 25 2024"
+pubDate: "2024-04-25"
 heroImage: "/blogimages/post6/bitcointhermodynamics.png"
 externalUrl: "https://youtu.be/EDjvWW6kNGY?si=l3nOmoN1OZewHm5p"
 tags: ["bitcoin","mining","thermodynamics","energy","heat transfer"]

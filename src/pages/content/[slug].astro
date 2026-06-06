@@ -6,10 +6,14 @@ import createSlug from "../../lib/createSlug";
 
 export async function getStaticPaths() {
   const postEntries = await getCollection("posts");
-  return postEntries.map((entry) => ({
-    params: { slug: createSlug(entry.data.title, entry.id) },
-    props: { entry },
-  }));
+  // Only generate internal pages for articles (posts without an externalUrl).
+  // External-link posts link out directly from the content listing card.
+  return postEntries
+    .filter((entry) => !entry.data.externalUrl)
+    .map((entry) => ({
+      params: { slug: createSlug(entry.data.title, entry.id) },
+      props: { entry },
+    }));
 }
 
 interface Props {

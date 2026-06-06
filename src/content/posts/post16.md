@@ -1,7 +1,7 @@
 ---
 title: "Podcast Rip With Robbie Maltby: Dedicated Bitcoin Spaces - Bitcoin Works x The Space"
-description: "A grass roots bitcoin citadel. Member run, with a FOSS blueprint."
-pubDate: "December 2 2024"
+description: "Wyatt and I joined Robbie Maltby of Bitcoin Works to share what we learned building The Space and what it takes to open a dedicated bitcoin community hub."
+pubDate: "2024-12-02"
 heroImage: "/blogimages/post16/dedicated_bitcoin_spaces.jpg"
 externalUrl: "https://x.com/BitcoinWorks__/status/1865104735214108738"
 tags: ["bitcoin","community","education"]

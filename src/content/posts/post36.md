@@ -5,4 +5,5 @@ pubDate: "2025-06-24"
 heroImage: "/logos/bitcoin-conference.svg"
 externalUrl: "https://x.com/tylerkstevens/status/1937600453379756259?s=20"
 tags: ["bitcoin", "mining", "energy", "heating", "heatpunk"]
+badge: "PANEL"
 ---

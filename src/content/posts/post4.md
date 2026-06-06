@@ -1,7 +1,7 @@
 ---
 title: "Review of my 1995 Nissan Truck with The Fast Lane"
 description: "I had the pleasure of shooting a video comparison of my personal '95 Nissan Hardbody against the new 2024 Nissan Fronteir Hardbody Edition. Thanks to Kase and the TFL team for having me out!"
-pubDate: "April 2 2024"
+pubDate: "2024-04-02"
 heroImage: "/TFL_Hardbody_Review.jpg"
 externalUrl: "https://www.youtube.com/watch?v=ZqG4IdXf1Ss"
 tags: ["auto","offroad","colorado"]

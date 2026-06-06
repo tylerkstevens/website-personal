@@ -5,4 +5,5 @@ pubDate: "2025-04-15"
 heroImage: "/logos/bitcoinpark.webp"
 externalUrl: "https://x.com/bitcoinpark_/status/1929923731251728714?s=20"
 tags: ["bitcoin", "mining", "energy", "community"]
+badge: "PANEL"
 ---

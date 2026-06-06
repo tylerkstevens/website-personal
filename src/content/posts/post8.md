@@ -1,7 +1,7 @@
 ---
 title: "ASIC Heat Reuse - Denver BitDevs Presentation"
 description: "At the beginning of June I hosted the monthly Denver BitDevs meetup. My presentation covered using bitcoin miners for waste heat reuse applications. Fundamentals, hardware, economics and more!"
-pubDate: "June 6 2024"
+pubDate: "2024-06-06"
 heroImage: "/blogimages/post8/SLIDE02.png"
 externalUrl: "https://www.youtube.com/watch?v=bTXjEke-AbU"
 tags: ["bitcoin","mining","thermodynamics","energy","heat transfer"]

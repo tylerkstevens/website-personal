@@ -1,7 +1,7 @@
 ---
 title: "Mining Bitcoin for Heat - X Spaces Discussion"
 description: "Last week I hosted my first X (fka Twitter) Spaces to discuss bitcoin mining heat reuse with some of the brightest minds in the industry!"
-pubDate: "May 20 2024"
+pubDate: "2024-05-20"
 heroImage: "/blogimages/post7/Xspaces_heatreuse.webp"
 externalUrl: "https://x.com/tylerkstevens/status/1792612347917512912"
 tags: ["bitcoin","mining","thermodynamics","energy","heat transfer"]
