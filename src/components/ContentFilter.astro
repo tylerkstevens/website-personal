@@ -2,28 +2,28 @@
 // Client-side filter tabs for the content feed
 ---
 
-<div id="content-filter-tabs" class="flex gap-1 mb-6 p-1 bg-base-200 rounded-lg w-fit">
+<div id="content-filter-tabs" class="flex gap-1 mb-6 p-1 bg-base-200 rounded-md w-fit">
   <button
     data-filter="all"
-    class="filter-tab px-4 py-1.5 rounded-md text-sm font-medium transition-colors duration-150 bg-base-100 text-base-content shadow-sm"
+    class="filter-tab px-4 py-1.5 rounded-md font-mono text-xs uppercase tracking-wider transition-colors duration-150 bg-base-100 text-base-content shadow-sm border border-base-300"
   >
     All
   </button>
   <button
     data-filter="post"
-    class="filter-tab px-4 py-1.5 rounded-md text-sm font-medium transition-colors duration-150 text-base-content/60 hover:text-base-content"
+    class="filter-tab px-4 py-1.5 rounded-md font-mono text-xs uppercase tracking-wider transition-colors duration-150 text-base-content/60 hover:text-base-content border border-transparent"
   >
     Posts
   </button>
   <button
     data-filter="talk"
-    class="filter-tab px-4 py-1.5 rounded-md text-sm font-medium transition-colors duration-150 text-base-content/60 hover:text-base-content"
+    class="filter-tab px-4 py-1.5 rounded-md font-mono text-xs uppercase tracking-wider transition-colors duration-150 text-base-content/60 hover:text-base-content border border-transparent"
   >
     Talks
   </button>
   <button
     data-filter="podcast"
-    class="filter-tab px-4 py-1.5 rounded-md text-sm font-medium transition-colors duration-150 text-base-content/60 hover:text-base-content"
+    class="filter-tab px-4 py-1.5 rounded-md font-mono text-xs uppercase tracking-wider transition-colors duration-150 text-base-content/60 hover:text-base-content border border-transparent"
   >
     Podcasts
   </button>
@@ -42,11 +42,11 @@
 
         // Update tab active states
         tabs.forEach(t => {
-          t.classList.remove('bg-base-100', 'text-base-content', 'shadow-sm');
-          t.classList.add('text-base-content/60');
+          t.classList.remove('bg-base-100', 'text-base-content', 'shadow-sm', 'border-base-300');
+          t.classList.add('text-base-content/60', 'border-transparent');
         });
-        tab.classList.add('bg-base-100', 'text-base-content', 'shadow-sm');
-        tab.classList.remove('text-base-content/60');
+        tab.classList.add('bg-base-100', 'text-base-content', 'shadow-sm', 'border-base-300');
+        tab.classList.remove('text-base-content/60', 'border-transparent');
 
         // Show/hide cards
         cards.forEach(card => {

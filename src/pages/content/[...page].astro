@@ -52,7 +52,7 @@ const { page } = Astro.props as { page: Page<ContentItem> };
   </div>
 
   {page.data.length === 0 ? (
-    <div class="bg-base-200 rounded-xl p-6 text-center">
+    <div class="bg-base-200 rounded-md border border-base-300 p-6 text-center">
       <p class="text-base-content/60">No content yet. Check back soon.</p>
     </div>
   ) : (
@@ -73,7 +73,7 @@ const { page } = Astro.props as { page: Page<ContentItem> };
 
   <div class="flex justify-between mt-8">
     {page.url.prev ? (
-      <a href={page.url.prev} class="btn btn-ghost btn-sm">
+      <a href={page.url.prev} class="btn btn-outline btn-sm font-mono uppercase tracking-wider text-xs border-base-300 hover:border-base-content/40 hover:bg-base-200 hover:text-base-content">
         <svg class="h-4 w-4 fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
           <path d="M15.41,16.58L10.83,12L15.41,7.41L14,6L8,12L14,18L15.41,16.58Z" />
         </svg>
@@ -81,7 +81,7 @@ const { page } = Astro.props as { page: Page<ContentItem> };
       </a>
     ) : <div />}
     {page.url.next ? (
-      <a href={page.url.next} class="btn btn-ghost btn-sm">
+      <a href={page.url.next} class="btn btn-outline btn-sm font-mono uppercase tracking-wider text-xs border-base-300 hover:border-base-content/40 hover:bg-base-200 hover:text-base-content">
         Older
         <svg class="h-4 w-4 fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
           <path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" />

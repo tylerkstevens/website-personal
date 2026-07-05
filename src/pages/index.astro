@@ -2,6 +2,7 @@
 import BaseLayout from "../layouts/BaseLayout.astro";
 import ProjectCard from "../components/ProjectCard.astro";
 import ContentCard from "../components/ContentCard.astro";
+import SectionHeader from "../components/SectionHeader.astro";
 import { getCollection } from "astro:content";
 import createSlug from "../lib/createSlug";
 import { Image } from "astro:assets";
@@ -49,7 +50,7 @@ const allContent = [
       </div>
       <div>
         <h1 class="text-3xl font-bold tracking-tight text-base-content">Tyler Stevens</h1>
-        <p class="text-base-content/60 mt-0.5">Founder &amp; CEO, Exergy · Denver, CO</p>
+        <p class="font-mono text-sm text-base-content/55 mt-1">Founder &amp; CEO, Exergy · Denver, CO</p>
       </div>
     </div>
     <div class="prose prose-base max-w-2xl">
@@ -77,9 +78,7 @@ const allContent = [
   </div>
 
   <!-- What I'm working on -->
-  <div class="mb-2">
-    <h2 class="text-xl font-semibold tracking-tight text-base-content mb-4">What I'm working on</h2>
-  </div>
+  <SectionHeader index="01" label="What I'm working on" />
 
   <div class="grid grid-cols-1 gap-3 mb-12">
     <ProjectCard
@@ -119,12 +118,11 @@ const allContent = [
   <!-- Recent Content -->
   {allContent.length > 0 && (
     <div>
-      <div class="flex items-center justify-between mb-4">
-        <h2 class="text-xl font-semibold tracking-tight text-base-content">Recent content</h2>
-        <a href="/content" class="text-sm text-base-content/50 hover:text-base-content transition-colors">
+      <SectionHeader index="02" label="Recent content">
+        <a href="/content" class="font-mono text-[11px] uppercase tracking-wider text-base-content/50 hover:text-base-content transition-colors">
           View all →
         </a>
-      </div>
+      </SectionHeader>
       <div class="divide-y divide-base-200">
         {allContent.map((item) => (
           <ContentCard

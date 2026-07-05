@@ -1,20 +1,20 @@
 ---
 const { sideBarActiveItemID } = Astro.props;
-const activeClass = "bg-base-300 font-medium";
+const activeClass = "sidebar-active";
 ---
 
 <ul class="menu grow shrink menu-md overflow-y-auto px-2">
   <li>
-    <a class="py-3 text-base rounded-lg" id="home" href="/">Home</a>
+    <a class="py-2.5 rounded-md font-mono text-[13px] uppercase tracking-[0.12em] text-base-content/70 hover:text-base-content transition-colors duration-150" id="home" href="/"><span class="text-base-content/35 mr-2" aria-hidden="true">01</span>Home</a>
   </li>
   <li>
-    <a class="py-3 text-base rounded-lg" id="about" href="/about">About</a>
+    <a class="py-2.5 rounded-md font-mono text-[13px] uppercase tracking-[0.12em] text-base-content/70 hover:text-base-content transition-colors duration-150" id="about" href="/about"><span class="text-base-content/35 mr-2" aria-hidden="true">02</span>About</a>
   </li>
   <li>
-    <a class="py-3 text-base rounded-lg" id="content" href="/content">Content</a>
+    <a class="py-2.5 rounded-md font-mono text-[13px] uppercase tracking-[0.12em] text-base-content/70 hover:text-base-content transition-colors duration-150" id="content" href="/content"><span class="text-base-content/35 mr-2" aria-hidden="true">03</span>Content</a>
   </li>
   <li>
-    <a class="py-3 text-base rounded-lg" id="contact" href="/contact">Contact</a>
+    <a class="py-2.5 rounded-md font-mono text-[13px] uppercase tracking-[0.12em] text-base-content/70 hover:text-base-content transition-colors duration-150" id="contact" href="/contact"><span class="text-base-content/35 mr-2" aria-hidden="true">04</span>Contact</a>
   </li>
 </ul>
 

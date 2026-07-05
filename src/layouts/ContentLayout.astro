@@ -23,17 +23,17 @@ import { Image } from "astro:assets";
           src={heroImage}
           alt={title}
           quality={80}
-          class="w-full mb-6 rounded-lg"
+          class="w-full mb-6 rounded-md"
         />
       )}
       <h1 class="title my-2 text-4xl font-bold">{title}</h1>
-      {pubDate && <time class="text-base-content/60 text-sm">{displayDate}</time>}
+      {pubDate && <time class="font-mono text-xs uppercase tracking-wider text-base-content/50">{displayDate}</time>}
       {updatedDate && (
-        <div class="text-sm text-base-content/50 mt-1">
+        <div class="font-mono text-xs uppercase tracking-wider text-base-content/50 mt-1">
           Last updated on <time>{updatedDate}</time>
         </div>
       )}
-      <div class="divider my-2"></div>
+      <div class="h-px bg-base-300 my-6"></div>
       <slot />
     </article>
   </main>

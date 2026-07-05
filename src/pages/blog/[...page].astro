@@ -51,7 +51,7 @@ const { page } = Astro.props;
   <div class="flex justify-between">
     {
       page.url.prev ? (
-        <a href={page.url.prev} class="btn btn-ghost my-10 mx-5">
+        <a href={page.url.prev} class="btn btn-outline btn-sm font-mono uppercase tracking-wider text-xs border-base-300 hover:border-base-content/40 hover:bg-base-200 hover:text-base-content my-10 mx-5">
           {" "}
           <svg
             class="h-6 w-6 fill-current md:h-8 md:w-8"
@@ -70,7 +70,7 @@ const { page } = Astro.props;
     }
     {
       page.url.next ? (
-        <a href={page.url.next} class="btn btn-ghost my-10 mx-5">
+        <a href={page.url.next} class="btn btn-outline btn-sm font-mono uppercase tracking-wider text-xs border-base-300 hover:border-base-content/40 hover:bg-base-200 hover:text-base-content my-10 mx-5">
           Older Posts{" "}
           <svg
             class="h-6 w-6 fill-current md:h-8 md:w-8"

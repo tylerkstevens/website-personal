@@ -1,8 +1,47 @@
-/* Inter font */
-@import '@fontsource/inter/400.css';
-@import '@fontsource/inter/500.css';
-@import '@fontsource/inter/600.css';
-@import '@fontsource/inter/700.css';
+/* IBM Plex — sans for voice, mono for the spec sheet */
+@import '@fontsource/ibm-plex-sans/400.css';
+@import '@fontsource/ibm-plex-sans/500.css';
+@import '@fontsource/ibm-plex-sans/600.css';
+@import '@fontsource/ibm-plex-sans/700.css';
+@import '@fontsource/ibm-plex-mono/400.css';
+@import '@fontsource/ibm-plex-mono/500.css';
+
+/* Per-theme texture variables */
+:root,
+[data-theme="industrial_light"] {
+  --grid-color: rgba(28, 27, 23, 0.05);
+  --grid-size: 32px;
+}
+
+[data-theme="industrial_dark"] {
+  --grid-color: rgba(236, 233, 226, 0.04);
+}
+
+/* Blueprint grid texture */
+.bg-grid {
+  background-image:
+    linear-gradient(var(--grid-color) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid-color) 1px, transparent 1px);
+  background-size: var(--grid-size) var(--grid-size);
+}
+
+/* Spec-sheet micro-label — section headers, metadata voice */
+.spec-label {
+  font-family: 'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.6875rem;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: oklch(var(--bc) / 0.55);
+}
+
+/* Active nav item — purple left rail */
+.sidebar-active {
+  background: oklch(var(--b3) / 0.6);
+  color: oklch(var(--bc));
+  font-weight: 500;
+  box-shadow: inset 2px 0 0 oklch(var(--p));
+}
 
 /* Timeline layout */
 .time-line-container > div:last-child .education__time > .education__line {
@@ -11,13 +50,13 @@
 
 /* Base typography */
 body {
-  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  font-family: 'IBM Plex Sans', system-ui, -apple-system, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 code, pre, kbd, samp {
-  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-family: 'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
 }
 
 hr {
@@ -27,11 +66,50 @@ hr {
   border-width: 1px;
 }
 
-/* Prose overrides for editorial feel */
+/* Focus visibility */
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid oklch(var(--p));
+  outline-offset: 2px;
+}
+
+/* Prose overrides */
 .prose {
   max-width: 72ch;
 }
 
+.prose a {
+  text-decoration-color: oklch(var(--bc) / 0.3);
+  transition: color 150ms, text-decoration-color 150ms;
+}
+
+.prose a:hover {
+  color: oklch(var(--p));
+  text-decoration-color: oklch(var(--p));
+}
+
+.prose h2, .prose h3 {
+  letter-spacing: -0.01em;
+}
+
 .prose code {
-  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-family: 'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  background: oklch(var(--b2));
+  border: 1px solid oklch(var(--b3));
+  border-radius: 0.25rem;
+  padding: 0.1em 0.35em;
+  font-weight: 400;
+}
+
+.prose code::before,
+.prose code::after {
+  content: none;
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
 }
