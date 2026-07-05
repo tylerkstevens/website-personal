@@ -5,7 +5,7 @@ const tag_url = url.split("/").slice(0, -1).join("/") + "/tag";
 ---
 
 <div
-  class="rounded-lg bg-base-100 hover:shadow-xl transition ease-in-out hover:scale-[102%]"
+  class="rounded-md bg-base-100 border border-base-300 hover:border-base-content/30 hover:bg-base-200/50 transition-colors duration-150"
 >
   <a href={url} target={target}>
     <div class="hero-content flex-col md:flex-row">
@@ -18,21 +18,21 @@ const tag_url = url.split("/").slice(0, -1).join("/") + "/tag";
             format="webp"
             alt={title}
             quality={80}
-            class="max-w-full md:max-w-[13rem] rounded-lg"
+            class="max-w-full md:max-w-[13rem] rounded-md"
           />
         )
       }
       <div class="grow w-full">
         <h1 class="text-xl font-bold">
           {title}
-          {badge && <div class="badge badge-secondary mx-2">{badge}</div>}
+          {badge && <div class="font-mono text-[10px] uppercase tracking-wider px-1.5 py-0.5 rounded-sm border border-base-300 text-base-content/55 inline-block mx-2 align-middle">{badge}</div>}
         </h1>
         <p class="py-1 text-1xl">{desc}</p>
         <div class="card-actions justify-end">
           {
             tags &&
               tags.map((tag) => (
-                <a href={`${tag_url}/${tag}`} class="badge badge-outline">
+                <a href={`${tag_url}/${tag}`} class="font-mono text-[10px] uppercase tracking-wider px-1.5 py-0.5 rounded-sm border border-base-300 text-base-content/55 hover:border-base-content/40 transition-colors">
                   {tag}
                 </a>
               ))

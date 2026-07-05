@@ -1,0 +1,17 @@
+---
+export interface Props {
+  index: string;
+  label: string;
+}
+
+const { index, label } = Astro.props;
+---
+
+<div class="flex items-center gap-3 mb-4">
+  <h2 class="spec-label flex items-center gap-3">
+    <span class="text-primary font-medium">{index}</span>
+    <span>{label}</span>
+  </h2>
+  <span aria-hidden="true" class="flex-1 h-px bg-base-300"></span>
+  <slot />
+</div>

@@ -30,9 +30,9 @@ const {
 
         function applyTheme(theme) {
           const themeMap = {
-            'light': 'editorial_light',
-            'dark': 'editorial_dark',
-            'system': getSystemTheme() === 'dark' ? 'editorial_dark' : 'editorial_light'
+            'light': 'industrial_light',
+            'dark': 'industrial_dark',
+            'system': getSystemTheme() === 'dark' ? 'industrial_dark' : 'industrial_light'
           };
           document.documentElement.setAttribute('data-theme', themeMap[theme] || themeMap['system']);
         }
@@ -62,7 +62,7 @@ const {
   <body>
     <div class="bg-base-100 drawer lg:drawer-open">
       <input id="my-drawer" type="checkbox" class="drawer-toggle" />
-      <div class="drawer-content bg-base-100">
+      <div class="drawer-content bg-base-100 bg-grid">
         <Header title={SITE_TITLE} />
         <div class="md:flex md:justify-center">
           <main class="p-6 pt-10 lg:max-w-[900px] max-w-[100vw]">
