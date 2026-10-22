@@ -6,10 +6,11 @@ import createSlug from "../../lib/createSlug";
 
 export async function getStaticPaths() {
   const postEntries = await getCollection("posts");
-  // Only generate internal pages for articles (posts without an externalUrl).
-  // External-link posts link out directly from the content listing card.
+  // Listing cards still open externalUrl when one is set.
+  // Also render an internal page when the markdown has a writeup,
+  // so /content/[slug] (and the RSS item that points at it) is not a 404.
   return postEntries
-    .filter((entry) => !entry.data.externalUrl)
+    .filter((entry) => !entry.data.externalUrl || Boolean(entry.body?.trim()))
     .map((entry) => ({
       params: { slug: createSlug(entry.data.title, entry.id) },
       props: { entry },
