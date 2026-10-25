@@ -19,11 +19,11 @@ import { Image } from "astro:assets";
       <h1 class="title my-2 text-4xl font-bold">{title}</h1>
       {pubDate && <time class="font-mono text-xs uppercase tracking-wider text-base-content/50">{displayDate}</time>}
       <br />
-      {badge && <div class="font-mono text-[10px] uppercase tracking-wider px-1.5 py-0.5 rounded-sm border border-base-300 text-base-content/55 inline-block my-1">{badge}</div>}
+      {badge && <div class="font-mono text-[10px] uppercase tracking-wider px-1.5 py-0.5 rounded-xs border border-base-300 text-base-content/55 inline-block my-1">{badge}</div>}
       {
         tags &&
           tags.map((tag) => (
-            <a href={`/blog/tag/${tag}`} class="font-mono text-[10px] uppercase tracking-wider px-1.5 py-0.5 rounded-sm border border-base-300 text-base-content/55 hover:border-base-content/40 transition-colors ml-2 no-underline">
+            <a href={`/blog/tag/${tag}`} class="font-mono text-[10px] uppercase tracking-wider px-1.5 py-0.5 rounded-xs border border-base-300 text-base-content/55 hover:border-base-content/40 transition-colors ml-2 no-underline">
               {tag}
             </a>
           ))
