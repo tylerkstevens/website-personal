@@ -5,7 +5,7 @@
 <div id="content-filter-tabs" class="flex gap-1 mb-6 p-1 bg-base-200 rounded-md w-fit">
   <button
     data-filter="all"
-    class="filter-tab px-4 py-1.5 rounded-md font-mono text-xs uppercase tracking-wider transition-colors duration-150 bg-base-100 text-base-content shadow-sm border border-base-300"
+    class="filter-tab px-4 py-1.5 rounded-md font-mono text-xs uppercase tracking-wider transition-colors duration-150 bg-base-100 text-base-content shadow-xs border border-base-300"
   >
     All
   </button>
@@ -42,10 +42,10 @@
 
         // Update tab active states
         tabs.forEach(t => {
-          t.classList.remove('bg-base-100', 'text-base-content', 'shadow-sm', 'border-base-300');
+          t.classList.remove('bg-base-100', 'text-base-content', 'shadow-xs', 'border-base-300');
           t.classList.add('text-base-content/60', 'border-transparent');
         });
-        tab.classList.add('bg-base-100', 'text-base-content', 'shadow-sm', 'border-base-300');
+        tab.classList.add('bg-base-100', 'text-base-content', 'shadow-xs', 'border-base-300');
         tab.classList.remove('text-base-content/60', 'border-transparent');
 
         // Show/hide cards
