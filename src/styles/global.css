@@ -6,6 +6,10 @@
 @import '@fontsource/ibm-plex-mono/400.css';
 @import '@fontsource/ibm-plex-mono/500.css';
 
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 /* Per-theme texture variables */
 :root,
 [data-theme="industrial_light"] {
