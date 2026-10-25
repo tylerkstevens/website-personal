@@ -1,9 +1,11 @@
 import { defineConfig } from 'astro/config';
 import mdx from '@astrojs/mdx';
 import sitemap from '@astrojs/sitemap';
-import tailwind from "@astrojs/tailwind";
 
 export default defineConfig({
   site: 'https://tylerstevens.me',
-  integrations: [mdx(), sitemap(), tailwind()]
+  // Astro 7 defaults compressHTML to 'jsx', which drops spaces between inline elements.
+  // Keep the previous HTML whitespace behavior.
+  compressHTML: true,
+  integrations: [mdx(), sitemap()]
 });
