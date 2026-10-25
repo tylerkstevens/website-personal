@@ -30,6 +30,4 @@ https://braiins.com/books/bitcoin-mining-heat-reuse
 
 - X: https://x.com/tylerkstevens
 - Nostr: https://primal.net/tyler
-- Email: tks@tylerstevens.me
-- GitHub: https://github.com/tylerkstevens
 - Signal: tylerkstevens.97
