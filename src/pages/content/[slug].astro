@@ -3,6 +3,7 @@ import { getCollection, render } from "astro:content";
 import type { CollectionEntry } from "astro:content";
 import ContentLayout from "../../layouts/ContentLayout.astro";
 import createSlug from "../../lib/createSlug";
+import { resolveMedia } from "../../lib/contentFeed";
 
 export async function getStaticPaths() {
   const postEntries = await getCollection("posts");
@@ -24,16 +25,31 @@ interface Props {
 const { entry } = Astro.props;
 const post = entry.data;
 const { Content } = await render(entry);
+const media = resolveMedia({
+  id: entry.id,
+  image: post.heroImage,
+  badge: post.badge,
+  externalUrl: post.externalUrl,
+  title: post.title,
+  body: entry.body,
+  cardQuote: post.cardQuote,
+});
 ---
 
 <ContentLayout
   title={post.title}
   description={post.description}
   pubDate={post.pubDate}
-  heroImage={post.heroImage}
+  heroImage={media.thumbnail}
+  thumbnailFit={media.thumbnailFit}
   updatedDate={post.updatedDate}
   badge={post.badge}
   tags={post.tags}
+  externalUrl={post.externalUrl}
+  videoUrl={media.videoUrl}
+  fallback={media.fallback}
+  quote={media.quote}
+  avatars={media.avatars}
 >
   <Content />
 </ContentLayout>

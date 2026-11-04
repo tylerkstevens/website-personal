@@ -2,50 +2,17 @@
 import type { Page } from "astro";
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import ContentCard from "../../components/ContentCard.astro";
-import { getCollection } from "astro:content";
-import createSlug from "../../lib/createSlug";
-
-type ContentItem = {
-  title: string;
-  description: string;
-  date: Date;
-  type: "post" | "talk" | "podcast";
-  url: string;
-  thumbnail?: string;
-  badge?: string;
-};
+import { getAllContent, type ContentItem } from "../../lib/contentFeed";
 
 export async function getStaticPaths({ paginate }) {
-  const posts = await getCollection("posts");
-  const appearances = await getCollection("appearances");
-
-  const allContent = [
-    ...posts.map(p => ({
-      title: p.data.title,
-      description: p.data.description,
-      date: p.data.pubDate,
-      type: "post" as const,
-      url: p.data.externalUrl ?? `/content/${createSlug(p.data.title, p.id)}`,
-      thumbnail: p.data.heroImage,
-      badge: p.data.badge,
-    })),
-    ...appearances.map(a => ({
-      title: a.data.title,
-      description: a.data.description,
-      date: a.data.date,
-      type: a.data.type as "talk" | "podcast",
-      url: a.data.url,
-      thumbnail: a.data.thumbnail,
-    })),
-  ].sort((a, b) => b.date.valueOf() - a.date.valueOf());
-
+  const allContent = await getAllContent();
   return paginate(allContent, { pageSize: 10 });
 }
 
 const { page } = Astro.props as { page: Page<ContentItem> };
 ---
 
-<BaseLayout title="Content — Tyler Stevens" sideBarActiveItemID="content">
+<BaseLayout title="Content — Tyler Stevens" sideBarActiveItemID="content" wide>
   <div class="mt-5 mb-8">
     <h1 class="text-3xl font-bold tracking-tight text-base-content mb-2">Content</h1>
     <p class="text-base-content/60">Writing, conference talks, and podcast appearances.</p>
@@ -56,8 +23,8 @@ const { page } = Astro.props as { page: Page<ContentItem> };
       <p class="text-base-content/60">No content yet. Check back soon.</p>
     </div>
   ) : (
-    <div class="divide-y divide-base-200">
-      {page.data.map((item) => (
+    <div class="grid grid-cols-1 gap-4 md:grid-cols-2 min-[1440px]:grid-cols-3">
+      {page.data.map((item, index) => (
         <ContentCard
           title={item.title}
           description={item.description}
@@ -65,7 +32,12 @@ const { page } = Astro.props as { page: Page<ContentItem> };
           type={item.type}
           url={item.url}
           thumbnail={item.thumbnail}
+          thumbnailFit={item.thumbnailFit}
           badge={item.badge}
+          featured={index === 0}
+          fallback={item.fallback}
+          quote={item.quote}
+          avatars={item.avatars}
         />
       ))}
     </div>

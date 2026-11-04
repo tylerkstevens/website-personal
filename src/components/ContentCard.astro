@@ -1,5 +1,6 @@
 ---
 import dayjs from "dayjs";
+import ContentThumb from "./ContentThumb.astro";
 
 export interface Props {
   title: string;
@@ -8,15 +9,19 @@ export interface Props {
   type: 'post' | 'talk' | 'podcast';
   url: string;
   thumbnail?: string;
+  thumbnailFit?: 'cover' | 'contain';
   badge?: string;
+  featured?: boolean;
+  fallback?: 'quote' | 'audio';
+  quote?: string;
+  avatars?: { name: string; src: string }[];
 }
 
-const { title, description, date, url, thumbnail, badge } = Astro.props;
+const { title, description, date, type, url, thumbnail, thumbnailFit = 'cover', badge, featured = false, fallback, quote, avatars } = Astro.props;
 
 const isExternal = url.startsWith('http');
 const target = isExternal ? '_blank' : '_self';
 const rel = isExternal ? 'noopener noreferrer' : undefined;
-
 const formattedDate = dayjs(date).format('MMM D, YYYY');
 ---
 
@@ -24,31 +29,38 @@ const formattedDate = dayjs(date).format('MMM D, YYYY');
   href={url}
   target={target}
   rel={rel}
-  class="content-card group flex items-start gap-4 p-4 rounded-md hover:bg-base-200/60 transition-colors duration-150"
+  data-type={type}
+  class:list={[
+    "content-card group flex h-full flex-col overflow-hidden rounded-md border border-base-300 bg-base-100 hover:border-base-content/30 transition-colors duration-150",
+    featured && "md:col-span-2 min-[1440px]:col-span-3",
+  ]}
 >
-  {thumbnail && (
-    <div class="shrink-0 w-16 h-16 rounded-md overflow-hidden bg-base-300">
-      <img src={thumbnail} alt={title} class="w-full h-full object-cover" loading="lazy" />
-    </div>
-  )}
-  <div class="flex-1 min-w-0">
-    <div class="flex items-center gap-2 mb-0.5">
-      <span class="font-mono text-[11px] tabular-nums text-base-content/45">{formattedDate}</span>
-      {badge && (
-        <span class="font-mono text-[10px] px-1.5 py-0.5 rounded-xs border border-base-300 text-base-content/55 tracking-wider uppercase">
-          {badge}
-        </span>
-      )}
-    </div>
-    <h3 class="font-semibold text-base-content leading-snug mb-1 group-hover:text-primary transition-colors flex items-start gap-1">
+  <ContentThumb
+    title={title}
+    badge={badge}
+    src={thumbnail}
+    fit={thumbnailFit}
+    featured={featured}
+    priority={featured}
+    fallback={fallback}
+    quote={quote}
+    avatars={avatars}
+    date={date}
+  />
+  <div class:list={["flex flex-1 flex-col gap-1.5", featured ? "p-5 sm:p-6" : "p-4"]}>
+    <h3 class:list={[
+      "font-semibold tracking-tight text-base-content leading-snug group-hover:text-primary transition-colors",
+      featured ? "text-xl sm:text-2xl" : "text-base",
+    ]}>
       <span>{title}</span>
       {isExternal && (
-        <svg class="shrink-0 mt-0.5 w-3.5 h-3.5 text-base-content/25 group-hover:text-primary/50 transition-colors" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+        <svg class="inline-block ml-1 mb-0.5 w-3.5 h-3.5 text-base-content/25 group-hover:text-primary/50 transition-colors" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
           <path d="M11 3a1 1 0 100 2h2.586l-6.293 6.293a1 1 0 101.414 1.414L15 6.414V9a1 1 0 102 0V4a1 1 0 00-1-1h-5z" />
           <path d="M5 5a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2v-3a1 1 0 10-2 0v3H5V7h3a1 1 0 000-2H5z" />
         </svg>
       )}
     </h3>
-    <p class="text-sm text-base-content/60 leading-relaxed line-clamp-2">{description}</p>
+    <time class="font-mono text-[11px] tabular-nums text-base-content/45" datetime={dayjs(date).format('YYYY-MM-DD')}>{formattedDate}</time>
+    <p class:list={["text-sm text-base-content/60 leading-relaxed", featured ? "line-clamp-3 max-w-3xl" : "line-clamp-2"]}>{description}</p>
   </div>
 </a>

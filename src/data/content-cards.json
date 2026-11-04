@@ -1,0 +1,69 @@
+{
+  "post21": {
+    "kind": "audio",
+    "avatars": [
+      {
+        "name": "₿radley James",
+        "src": "/content-thumbs/avatars/bjjames23.webp"
+      },
+      {
+        "name": "Tyler Stevens",
+        "src": "/content-thumbs/avatars/tylerkstevens.webp"
+      }
+    ]
+  },
+  "post22": {
+    "kind": "audio",
+    "avatars": [
+      {
+        "name": "Bitcoin Veterans",
+        "src": "/content-thumbs/avatars/bitcoinveterans.webp"
+      },
+      {
+        "name": "Tyler Stevens",
+        "src": "/content-thumbs/avatars/tylerkstevens.webp"
+      }
+    ]
+  },
+  "post55": {
+    "kind": "audio",
+    "avatars": [
+      {
+        "name": "🅖🅐🅡🅨 🅛🅔🅛🅐🅝🅓 The Bitcoin Boomer",
+        "src": "/content-thumbs/avatars/garyleland.webp"
+      },
+      {
+        "name": "Tyler Stevens",
+        "src": "/content-thumbs/avatars/tylerkstevens.webp"
+      },
+      {
+        "name": "mikeclear",
+        "src": "/content-thumbs/avatars/mikeclear.webp"
+      },
+      {
+        "name": "tronsington",
+        "src": "/content-thumbs/avatars/tronsington.webp"
+      },
+      {
+        "name": "lynnerae",
+        "src": "/content-thumbs/avatars/lynnerae.webp"
+      },
+      {
+        "name": "surferjimw",
+        "src": "/content-thumbs/avatars/surferjimw.webp"
+      }
+    ]
+  },
+  "post59": {
+    "kind": "audio",
+    "avatars": [
+      {
+        "name": "Tyler Stevens",
+        "src": "/content-thumbs/avatars/tylerkstevens.webp"
+      }
+    ]
+  },
+  "post68": {
+    "sourceText": "State of the Mining Industry:\n\n- ASIC manufacturers don't sell chips. Keep you locked into their slop systems\n- Aftermarket firmware providers are SAAS companies milking you for a split of your hash\n- Pools are centralized insurance companies without transparent share accounting"
+  }
+}

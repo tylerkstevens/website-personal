@@ -65,6 +65,7 @@ To get started with this project locally, follow these steps:
 - **Global Site Configuration:** Modify `src/config.ts` to change the site title, description, and other global settings.
 - **Theming:** The site uses DaisyUI themes. You can change the active theme by modifying the `data-theme` attribute in `src/layouts/BaseLayout.astro`.
 - **Content Collections:** Blog posts and portfolio items are managed as Markdown (`.md`) files within `src/content/blog/` and `src/content/portfolio/` respectively. Each content file includes frontmatter for metadata like title, description, and publication date.
+- **Card quote:** On a post with no image, set `cardQuote` in the frontmatter to choose the pull-quote shown on its card. Leave it unset and the build picks a short sentence from the post. A real image (photo, video thumbnail, or `og:image`) always replaces that generated card. `npm run thumbs` downloads speaker avatars for audio posts.
 - **Components:** Custom components are located in `src/components/`. You can create new `.astro` files here for reusable UI elements.
 
 ## Sitemap

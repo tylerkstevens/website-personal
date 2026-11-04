@@ -13,6 +13,8 @@ const postsCollection = defineCollection({
     externalUrl: z.string().url().optional(),
     badge: z.string().optional(),
     tags: z.array(z.string()).optional(),
+    // Optional pull-quote for the content card when the post has no image.
+    cardQuote: z.string().optional(),
   }),
 });
 

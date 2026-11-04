@@ -8,6 +8,7 @@
     "dev": "astro dev",
     "start": "astro dev",
     "build": "astro build",
+    "thumbs": "node scripts/fetch-content-thumbs.mjs",
     "preview": "astro preview",
     "astro": "astro"
   },
