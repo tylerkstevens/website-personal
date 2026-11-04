@@ -27,3 +27,9 @@ Tyler on where heating with bitcoin miners makes the biggest difference this win
 > We've seen upwards of not just subsidizing your heating bill, but actually getting paid to heat.
 
 [Watch the clip](https://x.com/watchbmtv/status/2117691001989136627)
+
+## Full interview
+
+The full BMTV episode. Tyler's interview starts at 1:23:28.
+
+[Watch the full episode](https://www.youtube.com/watch?v=MJzWDJf4thg&t=5008s)
