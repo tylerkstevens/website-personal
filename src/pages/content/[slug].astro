@@ -25,7 +25,15 @@ interface Props {
 const { entry } = Astro.props;
 const post = entry.data;
 const { Content } = await render(entry);
-const media = resolveMedia(entry.id, post.heroImage, post.badge, post.externalUrl);
+const media = resolveMedia({
+  id: entry.id,
+  image: post.heroImage,
+  badge: post.badge,
+  externalUrl: post.externalUrl,
+  title: post.title,
+  body: entry.body,
+  cardQuote: post.cardQuote,
+});
 ---
 
 <ContentLayout
@@ -39,6 +47,9 @@ const media = resolveMedia(entry.id, post.heroImage, post.badge, post.externalUr
   tags={post.tags}
   externalUrl={post.externalUrl}
   videoUrl={media.videoUrl}
+  fallback={media.fallback}
+  quote={media.quote}
+  avatars={media.avatars}
 >
   <Content />
 </ContentLayout>

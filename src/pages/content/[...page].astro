@@ -35,6 +35,9 @@ const { page } = Astro.props as { page: Page<ContentItem> };
           thumbnailFit={item.thumbnailFit}
           badge={item.badge}
           featured={index === 0}
+          fallback={item.fallback}
+          quote={item.quote}
+          avatars={item.avatars}
         />
       ))}
     </div>

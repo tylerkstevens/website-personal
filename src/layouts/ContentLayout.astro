@@ -8,9 +8,12 @@ import localizedFormat from "dayjs/plugin/localizedFormat";
 interface Props extends PostSchema {
   videoUrl?: string;
   thumbnailFit?: 'cover' | 'contain';
+  fallback?: 'quote' | 'audio';
+  quote?: string;
+  avatars?: { name: string; src: string }[];
 }
 
-const { title, description, pubDate, updatedDate, heroImage, badge, videoUrl, thumbnailFit = 'cover' } = Astro.props;
+const { title, description, pubDate, updatedDate, heroImage, badge, videoUrl, thumbnailFit = 'cover', fallback, quote, avatars } = Astro.props;
 dayjs.extend(localizedFormat);
 const displayDate = dayjs(pubDate).format("ll");
 ---
@@ -25,6 +28,10 @@ const displayDate = dayjs(pubDate).format("ll");
       videoUrl={videoUrl}
       featured
       priority
+      fallback={fallback}
+      quote={quote}
+      avatars={avatars}
+      date={pubDate}
     />
   </div>
   <article class="prose prose-lg max-w-[750px] prose-img:mx-auto">

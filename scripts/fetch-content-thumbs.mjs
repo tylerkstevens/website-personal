@@ -7,6 +7,9 @@
  * Other podcasts/articles → the page og:image / twitter:image.
  *
  * Posts that already have a non-logo image in the repo are left alone.
+ * Posts with no image get a generated card record in src/data/content-cards.json:
+ * audio posts store locally saved speaker avatars; text posts store the
+ * author's own X text when the markdown body has no sentence to quote.
  * Run: node scripts/fetch-content-thumbs.mjs
  */
 import { mkdir, readFile, readdir, writeFile } from 'node:fs/promises';
@@ -16,7 +19,9 @@ import sharp from 'sharp';
 const ROOT = path.resolve(import.meta.dirname, '..');
 const POSTS_DIR = path.join(ROOT, 'src/content/posts');
 const OUT_DIR = path.join(ROOT, 'public/content-thumbs');
+const AVATAR_DIR = path.join(OUT_DIR, 'avatars');
 const MANIFEST_PATH = path.join(ROOT, 'src/data/content-thumbs.json');
+const CARDS_PATH = path.join(ROOT, 'src/data/content-cards.json');
 const MIN_WIDTH = 400;
 const UA = 'Mozilla/5.0 (compatible; tylerstevens-thumbnails/1.0; +https://tylerstevens.me)';
 
@@ -218,11 +223,14 @@ for (const file of files) {
   const id = file.replace(/\.md$/, '');
   const text = await readFile(path.join(POSTS_DIR, file), 'utf8');
   const data = parseFrontmatter(text);
+  const body = text.split(/\n---\n/)[1] || '';
   posts.push({
     id,
+    title: data.title || '',
     heroImage: data.heroImage || '',
     externalUrl: data.externalUrl || '',
     badge: data.badge || '',
+    body,
   });
 }
 
@@ -265,6 +273,119 @@ await mapPool(posts, 5, async (post) => {
     console.error(`fail ${post.id}: ${error.message}`);
   }
 });
+
+async function fetchTweet(url) {
+  const id = xStatusId(url);
+  if (!id) return null;
+  const endpoint = `https://cdn.syndication.twimg.com/tweet-result?id=${id}&lang=en&token=${syndicationToken(id)}`;
+  const res = await fetch(endpoint, {
+    signal: AbortSignal.timeout(20000),
+    headers: { 'user-agent': UA, accept: 'application/json' },
+  });
+  if (!res.ok) return null;
+  return res.json();
+}
+
+function hiResAvatar(url) {
+  return url.replace(/_(?:normal|bigger|mini)(\.\w+)$/, '_400x400$1');
+}
+
+const savedAvatars = new Map();
+
+async function writeAvatar(buf, handle, name) {
+  const key = handle.toLowerCase();
+  const file = `${key}.webp`;
+  await sharp(buf).resize(160, 160, { fit: 'cover', position: 'centre' }).webp({ quality: 82 }).toFile(path.join(AVATAR_DIR, file));
+  const record = { name: name || (key === 'tylerkstevens' ? 'Tyler Stevens' : handle), src: `/content-thumbs/avatars/${file}` };
+  savedAvatars.set(key, record);
+  return record;
+}
+
+async function avatarFromUrl(imageUrl, handle, name) {
+  const key = handle.toLowerCase();
+  if (savedAvatars.has(key)) {
+    const existing = savedAvatars.get(key);
+    if (name && existing.name === handle) existing.name = name;
+    return existing;
+  }
+  try {
+    const buf = await fetchBuffer(hiResAvatar(imageUrl));
+    return writeAvatar(buf, handle, name);
+  } catch {
+    try {
+      const buf = await fetchBuffer(imageUrl);
+      return writeAvatar(buf, handle, name);
+    } catch {
+      return null;
+    }
+  }
+}
+
+async function avatarFromHandle(handle) {
+  const key = handle.toLowerCase();
+  if (savedAvatars.has(key)) return savedAvatars.get(key);
+  try {
+    const res = await fetch(`https://unavatar.io/x/${handle}?fallback=false`, {
+      headers: { 'user-agent': UA },
+      signal: AbortSignal.timeout(15000),
+    });
+    const type = res.headers.get('content-type') || '';
+    if (!res.ok || !type.startsWith('image/')) return null;
+    const buf = Buffer.from(await res.arrayBuffer());
+    if (buf.length < 400) return null;
+    return writeAvatar(buf, handle);
+  } catch {
+    return null;
+  }
+}
+
+function wantsAudio(post, tweet) {
+  const badge = post.badge.toUpperCase();
+  if (badge === 'AUDIO' || badge === 'AMA') return true;
+  if (/\bAMA\b/i.test(post.title)) return true;
+  return Boolean(tweet?.card?.name?.includes('audiospace'));
+}
+
+await mkdir(AVATAR_DIR, { recursive: true });
+const cardRecords = {};
+for (const post of posts) {
+  if (isUsableLocal(post.heroImage) || manifest[post.id]?.file) continue;
+  const tweet = xStatusId(post.externalUrl) ? await fetchTweet(post.externalUrl) : null;
+  if (!wantsAudio(post, tweet)) {
+    const sourceText = tweet?.note_tweet?.text || tweet?.text;
+    if (sourceText && !/^https?:\/\//.test(sourceText.trim())) {
+      cardRecords[post.id] = { sourceText };
+      console.log(`quote-source ${post.id}`);
+    }
+    continue;
+  }
+  const avatars = [];
+  const seen = new Set();
+  const add = (record) => {
+    if (!record?.src || seen.has(record.src)) return;
+    seen.add(record.src);
+    avatars.push({ name: record.name, src: record.src });
+  };
+  if (tweet?.user?.profile_image_url_https) {
+    add(await avatarFromUrl(tweet.user.profile_image_url_https, tweet.user.screen_name, tweet.user.name));
+  }
+  add(await avatarFromHandle('tylerkstevens'));
+  const mentions = [...(tweet?.text || '').matchAll(/@([A-Za-z0-9_]{1,15})/g)].map((match) => match[1]);
+  for (const handle of mentions) {
+    if (avatars.length >= 6) break;
+    if (handle.toLowerCase() === 'bitblockboom') continue;
+    add(await avatarFromHandle(handle));
+  }
+  if (!avatars.some((avatar) => avatar.src.endsWith('/tylerkstevens.webp'))) {
+    const tyler = await avatarFromHandle('tylerkstevens');
+    if (tyler) avatars.unshift({ name: tyler.name, src: tyler.src });
+  }
+  cardRecords[post.id] = { kind: 'audio', avatars: avatars.slice(0, 6) };
+  console.log(`audio ${post.id} avatars ${avatars.map((avatar) => avatar.name).join(', ') || 'none'}`);
+}
+
+const orderedCards = Object.fromEntries(Object.entries(cardRecords).sort(([a], [b]) => a.localeCompare(b, undefined, { numeric: true })));
+await writeFile(CARDS_PATH, JSON.stringify(orderedCards, null, 2) + '\n');
 
 const ordered = Object.fromEntries(Object.entries(manifest).sort(([a], [b]) => a.localeCompare(b, undefined, { numeric: true })));
 await writeFile(MANIFEST_PATH, JSON.stringify(ordered, null, 2) + '\n');

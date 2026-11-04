@@ -1,4 +1,11 @@
 ---
+import dayjs from "dayjs";
+
+interface Avatar {
+  name: string;
+  src: string;
+}
+
 interface Props {
   title: string;
   badge?: string;
@@ -7,10 +14,31 @@ interface Props {
   videoUrl?: string;
   featured?: boolean;
   priority?: boolean;
+  fallback?: 'quote' | 'audio';
+  quote?: string;
+  avatars?: Avatar[];
+  date?: Date;
 }
 
-const { title, badge, src, fit = 'cover', videoUrl, featured = false, priority = false } = Astro.props;
-const titleSize = featured ? 'text-2xl sm:text-4xl' : 'text-xl sm:text-2xl';
+const {
+  title,
+  badge,
+  src,
+  fit = 'cover',
+  videoUrl,
+  featured = false,
+  priority = false,
+  fallback,
+  quote,
+  avatars = [],
+  date,
+} = Astro.props;
+
+const dateLabel = date ? dayjs(date).format('MMM D, YYYY') : undefined;
+const speakers = avatars.filter((avatar) => avatar.src && !avatar.src.startsWith('http')).slice(0, 6);
+const showQuote = !src && fallback === 'quote' && quote;
+const showAudio = !src && fallback === 'audio';
+const quoteText = quote?.replace(/^[“"]|[”"]$/g, '') ?? '';
 ---
 
 <div class="relative aspect-video w-full overflow-hidden bg-base-200">
@@ -29,12 +57,70 @@ const titleSize = featured ? 'text-2xl sm:text-4xl' : 'text-xl sm:text-2xl';
           fit === 'contain' ? 'object-contain' : 'object-cover',
         ]}
       />
+    ) : showQuote ? (
+      <div class="absolute inset-0 flex flex-col bg-base-200 bg-grid px-4 pt-9 pb-3.5 sm:px-5 sm:pt-10 sm:pb-4">
+        <div class="pointer-events-none absolute inset-0 bg-gradient-to-br from-primary/10 via-transparent to-base-300/60" />
+        <p class:list={[
+          'relative min-h-0 flex-1 font-semibold tracking-tight text-base-content leading-snug',
+          featured ? 'text-xl sm:text-3xl line-clamp-4' : 'text-[15px] leading-snug line-clamp-4 sm:text-base',
+        ]}>
+          <span class="text-primary" aria-hidden="true">“</span>{quoteText}<span class="text-primary" aria-hidden="true">”</span>
+        </p>
+        <p class:list={[
+          'relative mt-2 shrink-0 text-base-content/55 line-clamp-2',
+          featured ? 'text-sm' : 'text-[11px] sm:text-xs',
+        ]}>{title}</p>
+      </div>
+    ) : showAudio ? (
+      <div class="absolute inset-0 flex flex-col justify-end gap-2 bg-base-200 px-4 pt-9 pb-3.5 sm:px-5 sm:pt-10 sm:pb-4">
+        <div class="flex min-h-0 items-center gap-3">
+          <div class="flex min-w-0 items-center">
+            {speakers.map((speaker) => (
+              <img
+                src={speaker.src}
+                alt={speaker.name}
+                width="64"
+                height="64"
+                loading="lazy"
+                decoding="async"
+                class:list={[
+                  'rounded-full border-2 border-base-100 object-cover bg-base-300',
+                  featured ? 'h-11 w-11 sm:h-12 sm:w-12' : 'h-8 w-8 sm:h-9 sm:w-9',
+                  '-ml-2 first:ml-0',
+                ]}
+              />
+            ))}
+          </div>
+          <svg class:list={['shrink-0 text-primary/55', featured ? 'h-8 w-28' : 'h-6 w-16 sm:w-20']} viewBox="0 0 112 32" aria-hidden="true">
+            <g fill="currentColor">
+              <rect x="0" y="14" width="6" height="8" rx="1" />
+              <rect x="10" y="8" width="6" height="16" rx="1" />
+              <rect x="20" y="4" width="6" height="24" rx="1" />
+              <rect x="30" y="10" width="6" height="14" rx="1" />
+              <rect x="40" y="2" width="6" height="28" rx="1" />
+              <rect x="50" y="8" width="6" height="18" rx="1" />
+              <rect x="60" y="12" width="6" height="10" rx="1" />
+              <rect x="70" y="4" width="6" height="24" rx="1" />
+              <rect x="80" y="9" width="6" height="16" rx="1" />
+              <rect x="90" y="2" width="6" height="28" rx="1" />
+              <rect x="100" y="11" width="6" height="12" rx="1" />
+            </g>
+          </svg>
+        </div>
+        <div>
+          <p class:list={[
+            'font-semibold tracking-tight text-base-content leading-snug line-clamp-2',
+            featured ? 'text-xl sm:text-2xl' : 'text-sm sm:text-base',
+          ]}>{title}</p>
+          {dateLabel && <p class="mt-1 font-mono text-[11px] tabular-nums text-base-content/55">{dateLabel}</p>}
+        </div>
+      </div>
     ) : (
       <div class="absolute inset-0 bg-grid" aria-hidden="true">
         <div class="absolute inset-0 bg-gradient-to-br from-primary/10 via-transparent to-base-300/70" />
         <div class="relative flex h-full flex-col justify-end p-4 sm:p-6">
           <div class="mb-3 h-0.5 w-8 bg-primary" />
-          <p class:list={['max-w-[18ch] font-semibold tracking-tight text-base-content leading-[1.05] line-clamp-4', titleSize]}>
+          <p class:list={['max-w-[18ch] font-semibold tracking-tight text-base-content leading-[1.05] line-clamp-4', featured ? 'text-2xl sm:text-4xl' : 'text-xl sm:text-2xl']}>
             {title}
           </p>
         </div>

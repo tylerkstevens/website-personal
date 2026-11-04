@@ -1,6 +1,13 @@
 import { getCollection } from 'astro:content';
 import createSlug from './createSlug';
+import { pickQuote } from './pickQuote';
 import thumbManifest from '../data/content-thumbs.json';
+import cardManifest from '../data/content-cards.json';
+
+export interface SpeakerAvatar {
+  name: string;
+  src: string;
+}
 
 export interface ContentItem {
   id: string;
@@ -13,6 +20,9 @@ export interface ContentItem {
   thumbnailFit: 'cover' | 'contain';
   badge?: string;
   videoUrl?: string;
+  fallback?: 'quote' | 'audio';
+  quote?: string;
+  avatars?: SpeakerAvatar[];
 }
 
 type ThumbRecord = {
@@ -23,7 +33,21 @@ type ThumbRecord = {
   isVideo: boolean;
 };
 
+type CardRecord = {
+  kind?: 'audio' | 'quote';
+  sourceText?: string;
+  avatars?: SpeakerAvatar[];
+};
+
 const thumbs = thumbManifest as Record<string, ThumbRecord>;
+const cards = cardManifest as Record<string, CardRecord>;
+
+function isAudioPost(badge: string | undefined, title: string, manifestKind?: string) {
+  if (manifestKind === 'audio') return true;
+  const label = (badge || '').toUpperCase();
+  if (label === 'AUDIO' || label === 'AMA') return true;
+  return /\bAMA\b/i.test(title);
+}
 
 function youtubeId(url: string): string | null {
   try {
@@ -45,13 +69,18 @@ function usableLocal(src?: string) {
   return Boolean(src && src.trim() && !src.startsWith('/logos/'));
 }
 
-export function resolveMedia(
-  id: string,
-  image: string | undefined,
-  badge: string | undefined,
-  externalUrl: string | undefined,
-) {
+export function resolveMedia(input: {
+  id: string;
+  image?: string;
+  badge?: string;
+  externalUrl?: string;
+  title: string;
+  body?: string;
+  cardQuote?: string;
+}) {
+  const { id, image, badge, externalUrl, title, body, cardQuote } = input;
   const fetched = thumbs[id];
+  const card = cards[id];
   let thumbnail: string | undefined;
   let thumbnailFit: 'cover' | 'contain' = 'cover';
 
@@ -70,10 +99,26 @@ export function resolveMedia(
       (externalUrl ? youtubeId(externalUrl) : null),
   );
 
+  let fallback: 'quote' | 'audio' | undefined;
+  let quote: string | undefined;
+  let avatars: SpeakerAvatar[] | undefined;
+  if (!thumbnail) {
+    if (isAudioPost(badge, title, card?.kind)) {
+      fallback = 'audio';
+      avatars = card?.avatars?.filter((avatar) => avatar.src && !avatar.src.startsWith('http'));
+    } else {
+      quote = pickQuote({ cardQuote, body, sourceText: card?.sourceText, title });
+      if (quote) fallback = 'quote';
+    }
+  }
+
   return {
     thumbnail,
     thumbnailFit,
     videoUrl: isVideo && externalUrl ? externalUrl : undefined,
+    fallback,
+    quote,
+    avatars,
   };
 }
 
@@ -85,7 +130,15 @@ export async function getAllContent(): Promise<ContentItem[]> {
 
   const items: ContentItem[] = [
     ...posts.map((post) => {
-      const media = resolveMedia(post.id, post.data.heroImage, post.data.badge, post.data.externalUrl);
+      const media = resolveMedia({
+        id: post.id,
+        image: post.data.heroImage,
+        badge: post.data.badge,
+        externalUrl: post.data.externalUrl,
+        title: post.data.title,
+        body: post.body,
+        cardQuote: post.data.cardQuote,
+      });
       return {
         id: post.id,
         title: post.data.title,
@@ -97,11 +150,21 @@ export async function getAllContent(): Promise<ContentItem[]> {
         thumbnailFit: media.thumbnailFit,
         badge: post.data.badge,
         videoUrl: media.videoUrl,
+        fallback: media.fallback,
+        quote: media.quote,
+        avatars: media.avatars,
       };
     }),
     ...appearances.map((appearance) => {
       const badge = appearance.data.type === 'podcast' ? 'PODCAST' : 'TALK';
-      const media = resolveMedia(appearance.id, appearance.data.thumbnail, badge, appearance.data.url);
+      const media = resolveMedia({
+        id: appearance.id,
+        image: appearance.data.thumbnail,
+        badge,
+        externalUrl: appearance.data.url,
+        title: appearance.data.title,
+        body: appearance.body,
+      });
       return {
         id: appearance.id,
         title: appearance.data.title,
@@ -113,6 +176,9 @@ export async function getAllContent(): Promise<ContentItem[]> {
         thumbnailFit: media.thumbnailFit,
         badge,
         videoUrl: media.videoUrl,
+        fallback: media.fallback,
+        quote: media.quote,
+        avatars: media.avatars,
       };
     }),
   ];
