@@ -3,34 +3,10 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 import ProjectCard from "../components/ProjectCard.astro";
 import ContentCard from "../components/ContentCard.astro";
 import SectionHeader from "../components/SectionHeader.astro";
-import { getCollection } from "astro:content";
-import createSlug from "../lib/createSlug";
 import { Image } from "astro:assets";
+import { getAllContent } from "../lib/contentFeed";
 
-// Get most recent 3 content items (posts + appearances combined)
-const posts = await getCollection("posts");
-const appearances = await getCollection("appearances");
-
-const allContent = [
-  ...posts.map(p => ({
-    title: p.data.title,
-    description: p.data.description,
-    date: p.data.pubDate,
-    type: 'post' as const,
-    url: p.data.externalUrl ?? `/content/${createSlug(p.data.title, p.id)}`,
-    thumbnail: p.data.heroImage,
-    badge: p.data.badge,
-  })),
-  ...appearances.map(a => ({
-    title: a.data.title,
-    description: a.data.description,
-    date: a.data.date,
-    type: a.data.type as 'talk' | 'podcast',
-    url: a.data.url,
-    thumbnail: a.data.thumbnail,
-    badge: undefined,
-  })),
-].sort((a, b) => b.date.valueOf() - a.date.valueOf()).slice(0, 3);
+const allContent = (await getAllContent()).slice(0, 3);
 ---
 
 <BaseLayout sideBarActiveItemID="home">
@@ -116,7 +92,7 @@ const allContent = [
           View all →
         </a>
       </SectionHeader>
-      <div class="divide-y divide-base-200">
+      <div class="grid grid-cols-1 gap-4">
         {allContent.map((item) => (
           <ContentCard
             title={item.title}
@@ -125,6 +101,7 @@ const allContent = [
             type={item.type}
             url={item.url}
             thumbnail={item.thumbnail}
+            thumbnailFit={item.thumbnailFit}
             badge={item.badge}
           />
         ))}
