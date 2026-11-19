@@ -215,5 +215,12 @@
     "height": 675,
     "source": "x-video",
     "isVideo": true
+  },
+  "post71": {
+    "file": "post71.webp",
+    "width": 1280,
+    "height": 720,
+    "source": "youtube",
+    "isVideo": true
   }
 }
